@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Programa Integral de Movimiento · Paqui Flores Casado · Kiko Martínez</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth;scroll-padding-top:74px}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.75;color:#1a1a2e;margin:0;background:#faf7f2}
+  .wrap{max-width:840px;margin:0 auto;padding:0 20px}
+  h1,h2,h3,h4{font-family:Georgia,'Times New Roman',serif;line-height:1.3}
+  p{margin:0 0 14px}
+  a{color:#c1704a}
+
+  /* MENÚ STICKY */
+  .nav-sticky{position:sticky;top:0;z-index:100;background:#0d1117;border-bottom:1px solid #2c3e50;padding:10px 16px;display:flex;gap:6px;overflow-x:auto;white-space:nowrap;scrollbar-width:thin}
+  .nav-sticky::-webkit-scrollbar{height:4px}
+  .nav-sticky::-webkit-scrollbar-thumb{background:#c9a96e;border-radius:2px}
+  .nav-btn{background:transparent;color:#faf7f2;border:1px solid #2c3e50;padding:7px 14px;border-radius:18px;font-size:0.78rem;cursor:pointer;font-weight:500;font-family:inherit;transition:all .2s;flex-shrink:0}
+  .nav-btn:hover,.nav-btn:focus{background:#c9a96e;color:#0d1117;border-color:#c9a96e;outline:none}
+
+  /* PORTADA */
+  .portada{background:#0d1117;color:#faf7f2;padding:80px 24px 90px;text-align:center;position:relative;overflow:hidden}
+  .portada .small{font-size:0.82rem;letter-spacing:5px;color:#c9a96e;text-transform:uppercase;margin-bottom:18px}
+  .portada h1{font-size:2.6rem;letter-spacing:1px;margin:18px 0 8px;color:#faf7f2;font-weight:400}
+  .portada .subt{font-family:Georgia,serif;font-size:1.2rem;color:#c1704a;letter-spacing:1px;margin-bottom:28px;font-style:italic}
+  .portada .quien{font-family:Georgia,serif;font-size:1.45rem;color:#c9a96e;margin:12px 0}
+  .portada .frase{color:#888899;font-style:italic;font-size:0.98rem;margin-top:34px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+  .ornament{height:1px;background:#c9a96e;width:64px;margin:24px auto}
+
+  /* SECCIONES */
+  section{padding:50px 20px}
+  .sec-light{background:#faf7f2}
+  .sec-warm{background:#f5ede0}
+  .sec-dark{background:#1a1f2e;color:#faf7f2}
+  .sec-night{background:#0d1117;color:#faf7f2}
+  section h2{font-size:1.85rem;color:#2c3e50;margin:0 0 8px}
+  .sec-dark h2, .sec-night h2{color:#c9a96e}
+  .sec-sub{color:#8b7355;font-style:italic;margin-bottom:28px;font-size:0.98rem}
+  .sec-dark .sec-sub, .sec-night .sec-sub{color:#888899}
+
+  /* BLOQUES MAPA */
+  .mapa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .mapa-card{background:#fff;padding:18px;border-radius:10px;font-size:0.92rem;cursor:pointer;transition:transform .2s, box-shadow .2s;border:0;text-align:left;font-family:inherit;color:inherit;width:100%}
+  .mapa-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.08)}
+  .mapa-card strong{display:block;color:#2c3e50;font-family:Georgia,serif;font-size:1.05rem;margin-bottom:4px}
+  .mapa-card span{color:#8b7355;font-size:0.86rem;line-height:1.5}
+
+  /* AVISO MÉDICO */
+  .aviso{background:#fff8e6;border:2px solid #c1704a;border-radius:14px;padding:22px;display:flex;gap:16px;align-items:flex-start}
+  .aviso .ico{font-size:2.2rem;line-height:1;flex-shrink:0}
+  .aviso h3{margin:0 0 6px;color:#c1704a}
+  .aviso p{margin:0;color:#4a4a6a;font-size:0.95rem;line-height:1.65}
+
+  /* PERFIL */
+  .perfil-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:24px 0}
+  .perfil-chip{background:#fff;border-left:4px solid #c9a96e;padding:14px 16px;border-radius:0 10px 10px 0}
+  .perfil-chip .k{font-size:0.72rem;color:#8b7355;text-transform:uppercase;letter-spacing:1.5px;display:block;margin-bottom:4px}
+  .perfil-chip .v{font-weight:600;color:#2c3e50;font-size:0.97rem}
+
+  /* FICHAS DE EJERCICIO */
+  .ficha{background:#fff;border-radius:14px;padding:22px;margin:20px 0;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+  .ficha.yoga{border-left:5px solid #7a9e7e}
+  .ficha.fuerza{border-left:5px solid #c1704a}
+  .ficha.movilidad{border-left:5px solid #c9a96e}
+  .ficha.calistenia{border-left:5px solid #2c3e50}
+  .ficha-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+  .badge-pilar{padding:3px 11px;border-radius:18px;font-size:0.66rem;text-transform:uppercase;letter-spacing:1.3px;color:#fff;font-weight:600;display:inline-block}
+  .badge-pilar.yoga{background:#7a9e7e}
+  .badge-pilar.fuerza{background:#c1704a}
+  .badge-pilar.movilidad{background:#c9a96e}
+  .badge-pilar.calistenia{background:#2c3e50}
+  .ficha h3{margin:8px 0 2px;color:#2c3e50;font-size:1.2rem}
+  .ficha .sub{color:#888899;font-style:italic;font-size:0.88rem;margin-bottom:0}
+  .badges-row{display:flex;flex-wrap:wrap;gap:6px}
+  .badge-sem{padding:3px 10px;border-radius:18px;font-size:0.7rem;color:#fff;font-weight:600}
+  .badge-sem.v{background:#4caf50}
+  .badge-sem.a{background:#ff9800}
+  .badge-sem.r{background:#f44336}
+  .badge-sem.b{background:#5a7da3}
+  .bloque{background:#faf7f2;padding:14px 16px;border-radius:9px;margin-bottom:10px;font-size:0.93rem;line-height:1.65}
+  .bloque strong{color:#c1704a;display:block;margin-bottom:4px;font-size:0.86rem;letter-spacing:0.3px}
+  .yoga .bloque strong{color:#5a7d5e}
+  .fuerza .bloque strong{color:#a35a3a}
+  .movilidad .bloque strong{color:#a8893f}
+  .calistenia .bloque strong{color:#2c3e50}
+  .ficha .vid-link{display:inline-block;background:#2c3e50;color:#fff;text-decoration:none;padding:9px 16px;border-radius:8px;font-size:0.82rem;margin-top:6px;font-weight:500}
+  .yoga .vid-link{background:#7a9e7e}
+  .fuerza .vid-link{background:#c1704a}
+  .movilidad .vid-link{background:#c9a96e;color:#0d1117}
+  .ficha ol, .ficha ul{margin:6px 0 0;padding-left:22px}
+  .ficha ol li, .ficha ul li{margin-bottom:5px}
+
+  /* GLOSARIO / TIPS */
+  .tip{background:#f5ede0;border-left:3px solid #c9a96e;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0;font-size:.9rem;color:#5a4a3a;line-height:1.65}
+  .tip strong{color:#a8893f}
+
+  /* SANKALPA BLOCK */
+  .sankalpa{background:#1a1f2e;border:1px solid #c9a96e;border-radius:14px;padding:34px 24px;text-align:center;margin:32px 0;color:#faf7f2}
+  .sankalpa .frase{font-family:Georgia,serif;font-style:italic;font-size:1.35rem;color:#faf7f2;line-height:1.6;margin:0}
+  .sankalpa .label{font-size:0.78rem;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin-bottom:14px}
+
+  /* CARTA */
+  .carta{font-family:Georgia,serif;font-size:1.05rem;line-height:1.95;color:#1a1a2e}
+  .carta p{margin:0 0 16px}
+  .sec-night .carta, .sec-dark .carta{color:#faf7f2}
+  .firma{margin-top:24px;color:#c1704a;font-family:Georgia,serif;font-size:1.15rem}
+  .sec-night .firma, .sec-dark .firma{color:#c9a96e}
+
+  /* TABLA CALENDARIO */
+  .cal-tabla{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);font-size:0.88rem;margin:18px 0}
+  .cal-tabla thead{background:#2c3e50;color:#c9a96e}
+  .cal-tabla th{padding:11px 9px;text-align:left;font-family:Georgia,serif;font-weight:600;font-size:0.85rem}
+  .cal-tabla td{padding:11px 9px;border-bottom:1px solid #f0e7d8;vertical-align:top}
+  .cal-tabla tr:last-child td{border-bottom:0}
+  .cal-pill{padding:2px 9px;border-radius:14px;font-size:0.7rem;color:#fff;display:inline-block;font-weight:600}
+  .cal-tabla tr.yoga{border-left:5px solid #7a9e7e}
+  .cal-tabla tr.fuerza{border-left:5px solid #c1704a}
+  .cal-tabla tr.movilidad{border-left:5px solid #c9a96e}
+  .cal-tabla tr.calistenia{border-left:5px solid #2c3e50}
+  .cal-tabla tr.descanso{border-left:5px solid #888899}
+
+  /* DIARIO */
+  .diario{width:100%;border-collapse:collapse;background:#fff;font-size:0.85rem;margin-top:16px}
+  .diario th, .diario td{border:1px solid #d8cdb6;padding:10px;text-align:left;vertical-align:top}
+  .diario th{background:#1a1f2e;color:#c9a96e;font-family:Georgia,serif}
+  .diario .col1{background:#f5ede0;font-weight:600;width:160px}
+
+  /* HÁBITOS LISTA */
+  .habitos-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+  .habito{background:#fff;border-radius:10px;padding:16px 18px;border-top:3px solid #7a9e7e}
+  .habito h4{margin:0 0 6px;color:#2c3e50;font-size:1.02rem}
+  .habito p{margin:0;font-size:0.88rem;color:#4a4a6a;line-height:1.6}
+
+  /* LECTURAS */
+  .libro{background:#fff;padding:14px 16px;margin:10px 0;border-radius:10px;border-left:4px solid #c9a96e}
+  .libro h4{margin:0 0 4px;color:#2c3e50;font-size:1rem}
+  .libro .aut{color:#8b7355;font-style:italic;font-size:0.85rem;margin:0 0 6px}
+  .libro p{margin:0;font-size:0.88rem;color:#4a4a6a;line-height:1.55}
+
+  /* RETOS */
+  .reto{background:#faf7f2;border-left:4px solid #c9a96e;border-radius:0 12px 12px 0;padding:18px 22px;margin:14px 0}
+  .reto h4{margin:0 0 4px;color:#2c3e50;font-size:1.05rem}
+  .reto .reto-xp{margin:0 0 12px;color:#a8893f;font-style:italic;font-size:0.85rem;font-weight:600}
+  .reto label{display:flex;align-items:flex-start;gap:9px;margin:7px 0;cursor:pointer;font-size:0.92rem;color:#4a4a6a;line-height:1.55}
+  .reto input[type="checkbox"]{margin-top:4px;flex-shrink:0;width:16px;height:16px;cursor:pointer;accent-color:#c1704a}
+
+  /* IMPRIMIR */
+  .btn-imprimir{position:fixed;bottom:24px;right:24px;background:#c1704a;color:#fff;border:0;padding:14px 22px;border-radius:30px;font-weight:600;cursor:pointer;font-size:0.95rem;box-shadow:0 6px 20px rgba(193,112,74,0.4);z-index:99;font-family:inherit;display:flex;align-items:center;gap:8px}
+  .btn-imprimir:hover{background:#a35a3a}
+
+  /* PRINT */
+  @media print{
+    .nav-sticky, #gamificacion, .btn-imprimir, .vid-link, button{display:none !important}
+    body{background:#fff}
+    section{page-break-inside:avoid;padding:30px 0}
+    .portada{padding:60px 24px}
+    .ficha{break-inside:avoid;box-shadow:none;border:1px solid #eee}
+    .reto{break-inside:avoid}
+    a{color:#000;text-decoration:none}
+    .sec-dark, .sec-night{background:#fff !important;color:#000 !important}
+    .sec-dark h2, .sec-night h2, .sankalpa, .portada{background:#f5ede0 !important;color:#1a1a2e !important;border:1px solid #c9a96e}
+    .sankalpa .frase, .portada h1, .portada .quien{color:#1a1a2e !important}
+    .carta{color:#1a1a2e !important}
+    .firma{color:#a35a3a !important}
+  }
+
+  @media (max-width:600px){
+    .portada h1{font-size:1.95rem}
+    section{padding:38px 16px}
+    section h2{font-size:1.5rem}
+    .btn-imprimir{bottom:14px;right:14px;padding:11px 18px;font-size:0.85rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MENÚ STICKY ============ -->
+<nav class="nav-sticky" aria-label="Navegación del programa">
+  <button class="nav-btn" onclick="irA('portada')">Inicio</button>
+  <button class="nav-btn" onclick="irA('bienvenida')">Bienvenida</button>
+  <button class="nav-btn" onclick="irA('mapa')">Mapa</button>
+  <button class="nav-btn" onclick="irA('perfil')">Perfil</button>
+  <button class="nav-btn" onclick="irA('pilar-yoga')">🧘 Yoga</button>
+  <button class="nav-btn" onclick="irA('pilar-fuerza')">💪 Fuerza</button>
+  <button class="nav-btn" onclick="irA('pilar-movilidad')">🌀 Movilidad</button>
+  <button class="nav-btn" onclick="irA('pilar-calistenia')">🤸 Movimiento</button>
+  <button class="nav-btn" onclick="irA('gamificacion')">🎮 Progreso</button>
+  <button class="nav-btn" onclick="irA('calendario')">📅 Calendario</button>
+  <button class="nav-btn" onclick="irA('habitos')">🌿 Hábitos</button>
+  <button class="nav-btn" onclick="irA('suplementacion')">🌱 Suplementación</button>
+  <button class="nav-btn" onclick="irA('lecturas')">📚 Lecturas</button>
+  <button class="nav-btn" onclick="irA('diario')">📖 Diario</button>
+  <button class="nav-btn" onclick="irA('despedida')">Despedida</button>
+</nav>
+
+<!-- ============ 1. PORTADA ============ -->
+<section id="portada" class="portada">
+  <div class="small">Kiko Martínez · Terapeuta Natural</div>
+  <div class="ornament"></div>
+  <h1>Programa Integral de Movimiento</h1>
+  <div class="subt">Cuatro pilares, un solo cuerpo</div>
+  <div class="quien">Paqui Flores Casado</div>
+  <div style="color:#888899;font-size:0.85rem;letter-spacing:2px;margin-top:6px">BIENESTAR EMOCIONAL · REGULACIÓN · 45 años</div>
+  <div class="ornament"></div>
+  <div class="frase">"Honro lo que fue.<br>Abro espacio para lo que viene.<br>Me cuido sin culpa."</div>
+</section>
+
+<!-- ============ 2. CARTA DE BIENVENIDA ============ -->
+<section id="bienvenida" class="sec-light">
+<div class="wrap">
+  <h2>Bienvenida</h2>
+  <p class="sec-sub">Antes de los ejercicios, lo que necesito decirte.</p>
+
+  <div class="carta">
+    <p>Querida Paqui:</p>
+
+    <p>Antes de hablarte de pilares, de ejercicios o de calendarios, necesito detenerme un momento contigo. Quiero darte las gracias. Y quiero que sepas algo importante: lo que has hecho hoy — sentarte a contarme con esa honestidad lo que llevas dentro, decidir que vas a dedicarte un tiempo a ti misma después de tantos años cuidando de otros — eso ya es el ejercicio más difícil de todos. Lo demás, lo del cuerpo, viene después. Y vendrá.</p>
+
+    <p>He leído tu cuestionario despacio, varias veces. Lo que me cuentas es enormemente humano. Dos pérdidas muy queridas en poco tiempo — una hace tres años y otra hace solo seis meses. Un trabajo de diecinueve años que se acabó hace cuatro y que todavía duele aceptar. Una historia con tu madre que te ha marcado desde la infancia. Una familia a la que sigues cuidando cada tarde. Y aun así, con todo eso encima, has llegado hasta aquí, con un 10/10 de compromiso, escribiendo que <em>"esta vez sea la definitiva"</em>. Eso, Paqui, es de admirar.</p>
+
+    <p>Pero hay tres cosas que he leído entre líneas y que van a guiar todo lo que sigue:</p>
+
+    <p>La primera: <strong>tu cuerpo está sosteniendo varios duelos a la vez, además del tuyo propio</strong>. La fibromialgia, el dolor lumbar habitual de 8/10, las caderas "con gomillas", los codos con calambres, esa mandíbula que te despierta cansada aunque duermas siete u ocho horas — no son fallos de tu cuerpo. Son su forma de sostener todo lo que has tenido que sostener tú. El sistema nervioso, cuando lleva años en alerta acumulada, fabrica dolor donde no hay lesión clara. Eso explica por qué te alivia el movimiento y te empeora la quietud: tu cuerpo necesita moverse para soltar lo que no puede soltar parado. Ese va a ser el corazón del programa.</p>
+
+    <p>La segunda: <strong>has aprendido a cuidar de otros mejor que de ti misma</strong>. Lo escribes con todas las letras: <em>"necesito cuidarme yo para cuidar a los demás"</em>. Y aunque la frase es preciosa, escondida dentro hay todavía un nudo — el de hacer las cosas <em>para</em> seguir cuidando, no <em>porque sí</em>, porque mereces el cuidado igual que lo merecen ellos. Una de las cosas que vamos a trabajar en estas seis semanas es muy concreta: aprender que cuidarte no es traición. Es la condición. Y, sobre todo: cuidarte sin culpa, aunque "queden cosas sin hacer". Por eso tu sankalpa — la intención que repetirás en cada práctica — termina con esa frase: <em>"Me cuido sin culpa."</em></p>
+
+    <p>La tercera: <strong>tu cuerpo todavía está dispuesto, y más capaz de lo que crees</strong>. Lee tus propios datos: fuerza 8, movilidad 7, equilibrio 9. Te bajas al suelo y subes una sentadilla profunda. Tocas el suelo sin doblar las rodillas. Te sostienes a la pata coja medio minuto. Caminas media hora sin fatigarte. Paqui, eso no es el cuerpo de alguien "que está mal". Es el cuerpo de una mujer que ha aguantado mucho y que, debajo del cansancio acumulado, tiene una base envidiable. Lo que vamos a hacer no es "empezar de cero" — es <strong>recuperar lo que ya tienes y darle un uso amable</strong>.</p>
+
+    <p>Los <strong>cuatro pilares</strong> que vamos a trabajar — adaptados específicamente a ti — son: <strong>yoga terapéutico</strong> (el protagonista de tu programa, porque tu sistema nervioso lo necesita más que ninguna otra cosa), <strong>movilidad y CORE profundo</strong> (para esas caderas con gomillas, para la lumbar cargada, para la escoliosis y la asimetría hombro-cadera), <strong>fuerza funcional muy progresiva con tus mancuernas y bandas</strong> (para que dejes de sentirte frágil cuando no lo eres y para los codos), y un cuarto pilar más juguetón de <strong>movimiento natural</strong> (porque alguien con equilibrio 9 y tantas ganas merece un rato de juego en su día).</p>
+
+    <p>Vas a ver tu progreso en una <strong>rueda radar de 6 dimensiones</strong> que se actualiza semana a semana, un sistema de XP, medallas y racha, y seis retos semanales pensados para tu vida real. No es un juego — es la forma de hacer visible el progreso invisible. Porque tu mente perfeccionista te va a decir que "no estás haciendo bastante" muchas veces. Los datos honestos no mienten: si la línea avanza, la línea avanza.</p>
+
+    <p>Una cosa más, importante, y te lo digo con todo el cariño: por todo lo que has vivido y por cómo me lo describes — los duelos recientes, la rumiación, el despertar cansada, la historia con tu madre — <strong>sería muy beneficioso que te plantearas, en algún momento, acompañarte también de un profesional de la psicología</strong>. No porque haya nada "mal" en ti — al contrario: porque mereces un espacio dedicado a esto donde puedas dejarlo todo. El movimiento te va a ayudar muchísimo, y el yoga aún más. Pero hay procesos que también piden palabras, y un profesional que las sostenga. Yo te acompaño desde el cuerpo. Y desde aquí te lo digo, porque cuidarse a una misma a veces empieza por dejarse cuidar también.</p>
+
+    <p>Y una última cosa, porque sé cómo eres: <strong>esto no es una competición</strong>. No conmigo, no contigo. Empieza siempre por debajo de lo que crees poder hacer. Los días que tu cuerpo te diga "hoy no", existe el <strong>Modo Express</strong> de 12 minutos y cuenta exactamente igual en la racha. El cuerpo agradece más la constancia mínima que la intensidad esporádica. Y un día perdido no rompe nada. Un día perdido también es parte del proceso.</p>
+
+    <p>Con todo el cariño y la convicción profunda de que esto va a salir bien,</p>
+    <div class="firma">— Kiko</div>
+  </div>
+</div>
+</section>
+
+<!-- ============ 3. MAPA DEL PROGRAMA ============ -->
+<section id="mapa" class="sec-warm" style="border-top:3px solid #c9a96e;border-bottom:3px solid #c9a96e">
+<div class="wrap">
+  <h2>Qué vas a encontrar en este programa</h2>
+  <p class="sec-sub">Un mapa para que sepas dónde estás en cada momento. Pulsa cualquier tarjeta para ir directamente.</p>
+
+  <div class="mapa-grid">
+    <button class="mapa-card" onclick="irA('perfil')" style="border-left:4px solid #c1704a"><strong>📍 Perfil Integral</strong><span>Cómo te he leído clínicamente y por qué he elegido este equilibrio</span></button>
+    <button class="mapa-card" onclick="irA('pilar-yoga')" style="border-left:4px solid #7a9e7e"><strong>🧘 Pilar Yoga</strong><span>El protagonista de tu programa. Asanas, pranayama y Yoga Nidra</span></button>
+    <button class="mapa-card" onclick="irA('pilar-fuerza')" style="border-left:4px solid #c1704a"><strong>💪 Pilar Fuerza</strong><span>Fuerza suave con tus mancuernas y bandas, sin agotarte</span></button>
+    <button class="mapa-card" onclick="irA('pilar-movilidad')" style="border-left:4px solid #c9a96e"><strong>🌀 Movilidad y CORE</strong><span>Caderas con "gomillas", lumbar cargada, escoliosis: aquí se trabajan</span></button>
+    <button class="mapa-card" onclick="irA('pilar-calistenia')" style="border-left:4px solid #2c3e50"><strong>🤸 Movimiento Natural</strong><span>El rato juguetón del día. Aprovechas tu equilibrio 9/10</span></button>
+    <button class="mapa-card" onclick="irA('gamificacion')" style="border-left:4px solid #c9a96e"><strong>🎮 Progreso</strong><span>XP, medallas, racha y rueda radar interactiva</span></button>
+    <button class="mapa-card" onclick="irA('calendario')" style="border-left:4px solid #c9a96e"><strong>📅 Calendario</strong><span>3 fases de 2 semanas con plan diario adaptado a tus tardes</span></button>
+    <button class="mapa-card" onclick="irA('habitos')" style="border-left:4px solid #7a9e7e"><strong>🌿 Hábitos</strong><span>Lo que sostiene el cuerpo entre sesiones</span></button>
+    <button class="mapa-card" onclick="irA('suplementacion')" style="border-left:4px solid #7a9e7e"><strong>🌱 Suplementación</strong><span>Fitoterapia segura sin lactosa ni fructosa, compatible con tu medicación</span></button>
+    <button class="mapa-card" onclick="irA('lecturas')" style="border-left:4px solid #c9a96e"><strong>📚 Lecturas</strong><span>7 libros para acompañar tu proceso de cuidarte</span></button>
+    <button class="mapa-card" onclick="irA('diario')" style="border-left:4px solid #c9a96e"><strong>📖 Diario imprimible</strong><span>Tu espejo semanal de práctica y de cómo te sientes</span></button>
+    <button class="mapa-card" onclick="irA('despedida')" style="border-left:4px solid #c1704a"><strong>💌 Despedida</strong><span>El mensaje que volverás a leer en días flojos</span></button>
+  </div>
+
+  <p style="text-align:center;color:#8b7355;font-size:0.92rem;margin-top:30px;font-style:italic">Recorrido completo de lectura inicial: 30-40 minutos.<br>Después, vuelve a las secciones que necesites cada día.</p>
+</div>
+</section>
+
+<!-- ============ 4. AVISO MÉDICO ============ -->
+<section id="aviso-medico" class="sec-light" style="padding:36px 20px">
+<div class="wrap">
+  <div class="aviso">
+    <div class="ico">⚕️</div>
+    <div>
+      <h3>Antes de empezar — léelo, por favor</h3>
+      <p>Este programa <strong>complementa la consulta presencial y NO sustituye ningún tratamiento médico, fisioterapéutico ni psicológico</strong>. Dado que tienes fibromialgia diagnosticada y escoliosis, te recomiendo encarecidamente compartir este programa con tu médico de cabecera en tu próxima revisión. Empieza siempre por debajo de lo que crees poder hacer: en fibromialgia, la regla de oro es <strong>nunca terminar más cansada de lo que se empezó</strong>. Si una sesión te deja exhausta o el dolor sube 24-48h después, te has pasado: bajamos intensidad la siguiente. Ante cualquier dolor agudo nuevo, mareo, palpitación inusual o síntoma raro, <strong>detén el ejercicio y consulta</strong>. El bilastina y el Relvar no interfieren con ningún ejercicio del programa.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ 5. PERFIL INTEGRAL ============ -->
+<section id="perfil" class="sec-light">
+<div class="wrap">
+  <h2>Tu Perfil Integral</h2>
+  <p class="sec-sub">Cómo te he leído antes de seleccionar ningún ejercicio. Todo lo que viene después se ha construido desde aquí.</p>
+
+  <div class="perfil-grid">
+    <div class="perfil-chip"><span class="k">Edad y composición</span><span class="v">45 años · 169 cm · 77 kg</span></div>
+    <div class="perfil-chip"><span class="k">Objetivo</span><span class="v">Bienestar emocional · Regulación</span></div>
+    <div class="perfil-chip"><span class="k">Patologías clave</span><span class="v">Fibromialgia · Escoliosis</span></div>
+    <div class="perfil-chip"><span class="k">Medicación</span><span class="v">Bilastina · Relvar inhalador</span></div>
+    <div class="perfil-chip"><span class="k">Intolerancias</span><span class="v">Lactosa · Fructosa</span></div>
+    <div class="perfil-chip"><span class="k">Sistema nervioso</span><span class="v">Mixto · ansiedad/agotamiento</span></div>
+    <div class="perfil-chip"><span class="k">Estrés percibido</span><span class="v">9/10</span></div>
+    <div class="perfil-chip"><span class="k">Capacidades</span><span class="v">F8 · M7 · Eq9 · Cardio6</span></div>
+    <div class="perfil-chip"><span class="k">Experiencia previa</span><span class="v">Ninguna formal — todo nuevo</span></div>
+    <div class="perfil-chip"><span class="k">Compromiso</span><span class="v">10/10</span></div>
+    <div class="perfil-chip"><span class="k">Tiempo disponible</span><span class="v">5 días · 20-30 min · variable</span></div>
+    <div class="perfil-chip"><span class="k">Material</span><span class="v">Esterilla · mancuernas · bandas · foam · pelota · silla</span></div>
+  </div>
+
+  <h3 style="color:#2c3e50;margin-top:30px">Lectura clínica</h3>
+
+  <p>Paqui, tu cuerpo es un cuerpo <strong>capaz pero sobrecargado</strong>, y eso cambia por completo el enfoque del programa. No partimos de "no puedes" — partimos de "no te has dado permiso". Esa es una diferencia enorme.</p>
+
+  <p>El dato más significativo del cuestionario para mí no es la fibromialgia ni el dolor lumbar de 8/10. Es esta frase, escrita en tu mensaje libre: <em>"espero que esta vez sea la definitiva"</em> + <em>"nunca he empezado nada"</em> + un compromiso de <em>10/10</em>. Eso es de mujer harta de prometerse cosas y no cumplírselas — no por falta de voluntad, sino porque <strong>siempre te han salido al paso otros a los que cuidar primero</strong>. Tu programa entero está diseñado teniendo esto en cuenta: <strong>sesiones cortas que de verdad caben en tu día, éxito desde el primer día, modo express digno (no de castigo) para los días imposibles, y refuerzo visible del progreso</strong> para que tu mente perfeccionista no pueda decirte "no estás haciendo nada".</p>
+
+  <div class="tip">
+    <strong>¿Qué es la fibromialgia y por qué el ejercicio te va a ayudar?</strong><br>
+    La fibromialgia es un síndrome de <em>sensibilización central</em>: tu sistema nervioso interpreta señales corporales normales como dolor amplificado. No es daño tisular, es una señal mal calibrada por años de estrés acumulado. La evidencia es muy clara: <strong>el ejercicio moderado, regular y progresivo es la intervención más efectiva</strong> — mejor que cualquier fármaco. Pero la dosis importa: si te pasas en intensidad, el dolor sube 24-48h después (post-exertional malaise). Por eso vamos a empezar suave, subir muy progresivo, y respetar la regla de oro: nunca terminar más cansada de lo que se empieza.
+  </div>
+
+  <p>Sobre el <strong>dolor lumbar habitual de 8/10 + caderas con "gomillas" + alivio con el movimiento</strong>: ese patrón es el de un <strong>psoas crónicamente contraído</strong> (psoas = músculo profundo que une la columna lumbar con la cara interna del fémur, el "músculo del miedo y de la huida") combinado con una <strong>asimetría pélvica</strong> derivada de tu escoliosis. Cuanto más quieta estás, más se acortan; cuanto más te mueves, más se sueltan. Por eso te alivia caminar y empeora estar sentada. Esto se trabaja con ejercicios muy específicos de movilidad de cadera, elongación de psoas, fortalecimiento del glúteo medio (clave para la escoliosis) y activación del CORE profundo. Está todo en el Pilar 3, y le vamos a dar atención especial.</p>
+
+  <div class="tip">
+    <strong>¿Qué es el psoas y por qué duele tanto?</strong><br>
+    El psoas es uno de los músculos más profundos del cuerpo — va desde las vértebras lumbares hasta la cara interna del muslo. Tiene dos funciones: levantar la pierna y, sobre todo, una función emocional reconocida en psicología somática: <strong>se tensa en respuesta al miedo, al estrés crónico, a la sensación de tener que "salir corriendo"</strong>. Cuando llevas años en alerta sostenida (cuidando, preocupándote, conteniendo), el psoas se queda contraído. Aprender a soltarlo es uno de los regalos terapéuticos más profundos del yoga.
+  </div>
+
+  <p>Sobre tu <strong>perfil del sistema nervioso mixto — ansiedad alternando con agotamiento</strong>: esto, técnicamente, es un sistema nervioso en <strong>desregulación crónica</strong>. Llevas tanto tiempo en alerta que cuando por fin paras, te desplomas. No es "tener poca energía" — es haber tenido demasiada durante demasiado tiempo. La intervención más eficaz documentada para esto se llama <strong>regulación vagal</strong>: técnicas que activan el nervio vago (el principal nervio parasimpático) para que tu cuerpo aprenda otra vez a alternar entre "encendida" y "descansando" con naturalidad. Por eso el <strong>Yoga Nidra</strong> (literalmente "sueño yóguico", una práctica de relajación profunda guiada en posición tumbada) es una pieza central de tu programa. Una sesión de 20 min equivale, en términos de regeneración del SN, a 2-3 horas de sueño profundo. Para alguien que se despierta cansada con 7-8 h dormidas, eso es oro.</p>
+
+  <p>Sobre los <strong>codos con calambres y dolor</strong>: con tu trabajo de limpieza (movimientos repetitivos de muñeca y antebrazo durante horas), es muy probable que sea una <strong>epicondilitis o epitrocleítis</strong> — inflamación del origen tendinoso de los músculos del antebrazo en el codo. Lo vamos a abordar con ejercicios excéntricos suaves y movilidad nerviosa específica en el Pilar 3. Importante: si esto NO mejora en 4-6 semanas, te recomiendo encarecidamente una valoración con fisioterapeuta para descartar afectación más profunda.</p>
+
+  <p>Sobre la <strong>ATM (mandíbula) que te despierta cansada</strong>: bruxismo nocturno, casi seguro. Es el lugar donde tu cuerpo "guarda" la rumiación que llevas todo el día. Vamos a trabajarlo desde dos frentes: relajación específica de la mandíbula al final de cada sesión de yoga, y herramientas de coaching emocional para reducir la rumiación diurna (que es lo que alimenta el bruxismo nocturno).</p>
+
+  <p>Por último, lo más importante: <strong>los duelos y el momento vital</strong>. Aquí, como te he dicho en la carta, mi recomendación honesta es complementar este programa con acompañamiento psicológico. El movimiento es una herramienta extraordinaria — pero los duelos también piden palabras, espacio dedicado y un profesional que los sostenga. Esto no es opcional ni alternativo a venir conmigo: es complementario, igual que tu médico de cabecera lo es. Tu salud emocional la mereces tanto como tu salud física.</p>
+
+  <h3 style="color:#2c3e50;margin-top:26px">Por qué este equilibrio de los 4 pilares para ti</h3>
+
+  <div class="habitos-list">
+    <div class="habito" style="border-top-color:#7a9e7e"><h4>🧘 Yoga · 40% (PROTAGONISTA)</h4><p><strong>El pilar principal de tu programa.</strong> Tu sistema nervioso lo necesita más que cualquier otra cosa: regulación vagal, soltar psoas, Yoga Nidra para regenerar.</p></div>
+    <div class="habito" style="border-top-color:#c9a96e"><h4>🌀 Movilidad y CORE · 25%</h4><p>Tu zona técnica: caderas, lumbar, escoliosis, codos. Aquí están las herramientas concretas para tu cuerpo concreto.</p></div>
+    <div class="habito" style="border-top-color:#c1704a"><h4>💪 Fuerza · 25%</h4><p>Suave, progresiva, con tus bandas y mancuernas. Sin agotamiento. Para autoestima corporal y densidad ósea de cara a la perimenopausia.</p></div>
+    <div class="habito" style="border-top-color:#2c3e50"><h4>🤸 Movimiento Natural · 10%</h4><p>El rato juguetón. Aprovechas tu equilibrio 9/10. Aquí entrenas <em>soltar el perfeccionismo</em> mientras te mueves.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ============ 6. PILAR 1 — YOGA TERAPÉUTICO ============ -->
+<section id="pilar-yoga" class="sec-light" style="border-top:4px solid #7a9e7e">
+<div class="wrap">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px">
+    <div style="font-size:2.4rem">🧘</div>
+    <div>
+      <div style="color:#7a9e7e;font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;font-weight:600">Pilar 1 · Protagonista</div>
+      <h2 style="margin:0">Yoga Terapéutico</h2>
+    </div>
+  </div>
+  <p class="sec-sub">No es la parte "blanda" del programa — es donde tu sistema nervioso aprende otra vez a regularse. Para ti, es la herramienta más importante de todas.</p>
+
+  <div class="tip">
+    <strong>Por qué el yoga es el corazón de TU programa</strong><br>
+    Tu fibromialgia, tu dolor lumbar, los codos, la mandíbula, el psoas tenso, despertar cansada — todo eso comparte una raíz: <strong>un sistema nervioso que lleva demasiado tiempo en alerta</strong>. La fuerza y el cardio te van a venir muy bien — pero si solo trabajáramos eso sin regular antes el sistema nervioso, le estaríamos pidiendo a un cuerpo agotado que produjera más. El yoga aquí no es "ñoño" — es la intervención más eficaz documentada en perfiles como el tuyo (Bessel van der Kolk, Stephen Porges, Peter Levine).
+  </div>
+
+  <h3 style="color:#5a7d5e;margin-top:30px">🌬️ Tu pranayama personalizado · respiraciones que regulan</h3>
+  <p>Dos técnicas, cada una con su momento del día. Son la herramienta más rápida y portátil que tienes para bajar el estrés.</p>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>1 · Respiración 4-7-8 ✶</h3>
+        <div class="sub">Técnica del Dr. Andrew Weil · activador parasimpático rápido</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura para ti</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Es la herramienta más rápida que existe para inducir el estado parasimpático (descanso). Para alguien que rumia mucho y se despierta cansada, esta respiración hecha antes de dormir literalmente mejora la calidad del sueño y reduce el bruxismo nocturno. También sirve cuando notes la ansiedad subir durante el día.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Tumbada en la cama o sentada cómoda, lengua tocando suavemente el paladar detrás de los incisivos superiores.</li>
+        <li>Exhala todo el aire por la boca, haciendo un ligero sonido "fffff".</li>
+        <li>Cierra la boca. Inhala por la nariz contando hasta 4.</li>
+        <li>Retén el aire contando hasta 7 (sin tensión — si te marea, baja la cuenta a 4-4-6).</li>
+        <li>Exhala completamente por la boca contando hasta 8, sonido suave.</li>
+        <li>Eso es un ciclo. Haz 4 ciclos. Solo 4 — si haces más, no funciona mejor.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Momento</strong>2 minutos · ANTES DE DORMIR cada noche + cuando notes ansiedad durante el día</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>Inhalar activa el simpático (acción), exhalar activa el parasimpático (descanso). Por eso la exhalación más larga que la inhalación es físicamente un "soltar". Cuando exhales, imagina que sueltas una preocupación con cada vaciado de aire.</div>
+  </article>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>2 · Nadi Shodhana ✶</h3>
+        <div class="sub">Respiración alternada por las fosas nasales · "purificación de los canales"</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura para ti</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Equilibra los dos hemisferios cerebrales y reduce el cortisol (la hormona del estrés). Es especialmente útil para tu mente rumiativa: durante los 5 minutos de práctica, la atención está tan ocupada con la mecánica que la mente no puede dar vueltas a las cosas. Es una "vacación" mental de 5 minutos.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Sentada cómoda en una silla o en el suelo, columna alargada. Pulgar derecho cierra la fosa nasal derecha.</li>
+        <li>Inhala por la fosa nasal izquierda durante 4 segundos.</li>
+        <li>Cierra ambas fosas con pulgar y anular. Pausa breve, 2 segundos (sin forzar).</li>
+        <li>Libera la fosa derecha. Exhala por la derecha durante 6 segundos.</li>
+        <li>Inhala por la fosa derecha 4 segundos. Pausa breve. Exhala por la izquierda 6 segundos.</li>
+        <li>Eso es un ciclo completo. Continúa 8-10 ciclos.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Momento</strong>5 minutos · Por la mañana al despertar o antes de cualquier sesión de yoga</div>
+    <div class="bloque"><strong>⚠️ Adaptación importante para tu alergia</strong>Como tienes alergia a ácaros, olivo y polvo, hay días que tendrás congestión nasal y no podrás hacer Nadi Shodhana. Esos días, sustitúyelo por la respiración 4-7-8 hecha solo por la boca. Cuenta exactamente igual.</div>
+  </article>
+
+  <div class="tip" style="background:#fff3d8;border-left-color:#a35a3a">
+    <strong>🚫 Pranayamas que YO DESCARTO para ti</strong><br>
+    Hay técnicas de respiración yóguica muy populares en YouTube que en tu perfil NO son una buena idea — o pueden incluso empeorarte. Te las dejo explícitas para que las identifiques si las ves por ahí y sepas pasar de largo:<br><br>
+    • <strong>Kapalabhati</strong> (respiración de fuego rápida): activa fuertemente el simpático. Justo lo contrario de lo que tu SN necesita.<br>
+    • <strong>Bhastrika</strong> (respiración de fuelle): aún más intensa. NO en perfiles ansiosos.<br>
+    • <strong>Retenciones prolongadas (Kumbhaka largo)</strong>: pueden disparar la ansiedad en personas con tendencia a ataques de pánico.<br>
+    Tu pranayama es <em>siempre</em> el lento, el suave, el que alarga la exhalación. No el espectacular.
+  </div>
+
+  <h3 style="color:#5a7d5e;margin-top:36px">🪷 Biblioteca de asanas seleccionadas para ti</h3>
+  <p>Ocho asanas, ordenadas como una sesión completa. <strong>Las marcadas con ✶ son las del Modo Express</strong> — si solo tienes 12 minutos un día, esas son las que haces.</p>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>3 · Marjaryasana–Bitilasana ✶</h3>
+        <div class="sub">Postura del Gato y la Vaca · calentamiento espinal</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve</strong>Articula toda la columna vértebra a vértebra. Especialmente útil para tu escoliosis y tu lumbar cargada — devuelve movimiento sin compresión. También calienta suavemente las muñecas (para tus codos) y prepara el cuerpo para todo lo que viene.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>A cuatro patas. Muñecas bajo hombros, rodillas bajo caderas. Si te duelen muñecas, apoya en los puños cerrados o en los antebrazos.</li>
+        <li>Inhala: VACA — lleva el pubis y el pecho hacia arriba, abre el corazón, mirada al techo.</li>
+        <li>Exhala: GATO — redondea la espalda, lleva el ombligo dentro, mirada al ombligo.</li>
+        <li>Sigue ondulando, respiración por respiración.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Respiraciones</strong>8-12 respiraciones lentas, sin prisa</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>La ondulación libera la rigidez del control. Esto es lo opuesto a tu perfeccionismo: no hay forma "correcta" exacta — hay movimiento honesto. Permítete moverte un poco "fuera de la cuadrícula": pequeños círculos con la cadera, ondas laterales suaves. Tu cuerpo tiene permiso para improvisar aquí.</div>
+  </article>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>4 · Supta Baddha Konasana ✶</h3>
+        <div class="sub">Mariposa tumbada · apertura de cadera con regulación SN</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · ESPECIAL para tu psoas</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Es la asana más importante de tu programa para soltar el psoas y abrir las caderas con "gomillas" SIN exigir nada de fuerza. Es pasiva: el cuerpo se entrega y el tiempo hace el trabajo. Además, en esta postura el diafragma se libera, lo que profundiza la respiración. Es muy regulador para el SN.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Túmbate boca arriba en la esterilla.</li>
+        <li>Junta las plantas de los pies y deja caer las rodillas a los lados, formando un rombo con las piernas.</li>
+        <li>Pon un cojín o manta enrollada DEBAJO de cada rodilla — para que las caderas no estén forzadas, sino apoyadas.</li>
+        <li>Brazos relajados a los lados, palmas hacia arriba.</li>
+        <li>Cierra los ojos. Respiración natural. NO fuerces nada — la gravedad hace el trabajo.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Momento</strong>5-7 minutos sostenida · al final de cada sesión de yoga, o como sesión completa los días de dolor</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>Las caderas son, en psicología somática, el lugar donde se guardan emociones no procesadas — especialmente las relacionadas con seguridad, miedo y duelo. Cuando estés aquí, puede que sientas tristeza inesperada o ganas de llorar. Si pasa, deja que pase. No huyas. Es tu cuerpo soltando.</div>
+  </article>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>5 · Balasana</h3>
+        <div class="sub">Postura del Niño · refugio y descompresión lumbar</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve</strong>Descomprime la zona lumbar (tu zona más cargada), estira suavemente la espalda baja y los glúteos. Es también una postura emocional: significa "permiso para descansar".</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>De rodillas en la esterilla, dedos gordos del pie tocándose, rodillas anchas a la anchura de la esterilla.</li>
+        <li>Siéntate en los talones (si no llegas, pon un cojín entre talones y glúteos).</li>
+        <li>Inclínate hacia delante hasta apoyar la frente en el suelo o en un cojín.</li>
+        <li>Brazos extendidos al frente o pegados al cuerpo, lo que te resulte cómodo.</li>
+        <li>Respira lento por la nariz. Siente la espalda baja expandirse con cada inhalación.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Respiraciones</strong>6-10 respiraciones largas</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>Esta postura tiene forma de "rendición". En lugar de luchar contra el cansancio o el dolor, te entregas a la gravedad. Para alguien como tú — que se exige mucho — esta postura es un permiso explícito a no hacer nada durante unas respiraciones. Apróvechalo.</div>
+  </article>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>6 · Adho Mukha Svanasana adaptada</h3>
+        <div class="sub">Perro boca abajo modificado · cadena posterior completa</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem a">🟡 Con adaptación para tus codos</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve</strong>Estira toda la cadena posterior — gemelos, isquiotibiales, espalda. Fortalece suavemente los hombros y el CORE. Pero en tu caso, lo modificamos para no agravar los codos.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo (VERSIÓN ADAPTADA PARA TI)</strong>
+      <ol>
+        <li>VERSIÓN INICIAL: Hazla con las manos apoyadas en la SILLA (apoyo elevado), no en el suelo. Pies a la anchura de caderas, talones empujando hacia el suelo, cabeza relajada entre los brazos.</li>
+        <li>Esto reduce un 60% el peso sobre los codos y muñecas.</li>
+        <li>Si los codos te lo permiten más adelante, baja gradualmente: apoyo en sofá → apoyo en cojín en el suelo → suelo directo.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Respiraciones</strong>5-8 respiraciones</div>
+    <div class="bloque"><strong>⚠️ Adaptación para tus codos con calambres</strong>Si en algún momento sientes dolor agudo en los codos o calambre, baja inmediatamente. La regla: <strong>incomodidad estirando OK · dolor de codo NO</strong>. Si esta postura aumenta los síntomas, sustitúyela por Balasana extendida (postura del niño con brazos extendidos al frente).</div>
+  </article>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>7 · Ardha Matsyendrasana sentada</h3>
+        <div class="sub">Torsión sentada · movilidad espinal y digestión</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · MUY útil para tu escoliosis</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Las torsiones son <strong>el ejercicio rey para la escoliosis</strong> — devuelven movilidad rotacional a la columna y, lo más importante, <em>trabajan los dos lados</em>, lo que ayuda a equilibrar la asimetría. También masajean los órganos digestivos (útil para tu intolerancia a la fructosa y la lactosa, que pueden generar tensión abdominal).</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Siéntate en el suelo con las piernas extendidas. Si la lumbar se redondea mucho, siéntate sobre un cojín.</li>
+        <li>Dobla la rodilla derecha y cruza el pie derecho por fuera del muslo izquierdo, apoyado en el suelo.</li>
+        <li>Inhala: alarga la columna hacia arriba (importante — la torsión nace de la elongación).</li>
+        <li>Exhala: gira el torso hacia la derecha. Mano izquierda agarra la rodilla derecha o la abraza, mano derecha apoyada detrás como soporte.</li>
+        <li>Respira 5 ciclos manteniendo la elongación + la rotación.</li>
+        <li>Inhala para volver al centro. Cambia de lado y repite IGUAL.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Respiraciones</strong>5 respiraciones por lado · IGUAL tiempo en ambos lados (regla de oro de escoliosis)</div>
+    <div class="bloque"><strong>⚠️ Adaptación importante para escoliosis</strong>NO fuerces más un lado que otro. La sensación entre los dos lados va a ser MUY diferente — eso es la asimetría. La idea no es "estirar el lado tenso", sino mover los dos por igual y dejar que el lado tenso se vaya soltando con el tiempo. Paciencia.</div>
+  </article>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>8 · Setu Bandhasana</h3>
+        <div class="sub">Puente · apertura torácica + glúteos + apertura del psoas</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · DOBLE BENEFICIO para ti</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Doble beneficio: por un lado <em>elonga activamente el psoas</em> (el músculo que tiene tu cadera en "gomillas"), por otro <em>activa los glúteos</em> (debilitados por la postura habitual sentada) y <em>abre el pecho</em> (donde a menudo se contiene la tristeza del duelo).</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Túmbate boca arriba. Rodillas dobladas, pies anchura caderas, talones pegados a los glúteos.</li>
+        <li>Brazos a los lados, palmas hacia abajo.</li>
+        <li>Inhala. Exhala: <strong>aprieta primero los glúteos</strong> (importante — esto protege la lumbar), después eleva la cadera hacia el techo.</li>
+        <li>Sube hasta donde te resulte cómodo. NO arquees mucho la lumbar — el objetivo es una línea recta hombro-cadera-rodilla.</li>
+        <li>Aguanta 5 respiraciones. Inhala bajando lento.</li>
+        <li>Haz 4-6 repeticiones.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Repeticiones</strong>4-6 puentes · 5 respiraciones arriba cada uno</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>Abrir el pecho hacia el cielo es físicamente un gesto contrario al "encogerse de tristeza". Cuando estés aquí arriba, respira hondo y deja que el pecho se expanda. A veces aparece emoción aquí también — está bien.</div>
+  </article>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>9 · Viparita Karani ✶</h3>
+        <div class="sub">Piernas en la pared · la postura más reguladora que existe</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · LA REINA del Modo Express</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Esta postura, sostenida 5-10 min, es <strong>la intervención más eficaz, simple y barata para regular el sistema nervioso</strong>. Reduce la frecuencia cardiaca, drena las piernas cansadas (tu trabajo limpiando), descomprime la lumbar y activa el parasimpático en muy pocos minutos. Si solo tuvieras 10 minutos en toda la semana, esta sería la asana.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Pega un lado del cuerpo a la pared, sentada.</li>
+        <li>Gira el cuerpo y túmbate boca arriba mientras subes las piernas por la pared. Glúteos lo más pegados a la pared posible.</li>
+        <li>Si la lumbar tira, aleja los glúteos 10-15 cm o pon un cojín bajo la pelvis.</li>
+        <li>Brazos relajados a los lados, palmas hacia arriba o sobre el vientre.</li>
+        <li>Cierra los ojos. Respiración natural. <strong>No hagas nada</strong>. Solo estar.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Momento</strong>5-10 minutos · Final de cada sesión · TODOS los días si puedes · ANTES DE DORMIR si has tenido un día difícil</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>"No hacer nada" durante 10 minutos te va a costar. Tu mente intentará llenarlo de listas, preocupaciones, planes. Cuando ocurra, lleva la atención a la respiración: cuenta inhalaciones de 1 a 10, vuelta a empezar. Es entrenamiento de presencia, exactamente lo que tu rumiación necesita.</div>
+  </article>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>10 · Savasana con relajación de mandíbula</h3>
+        <div class="sub">Postura del cadáver · integración + relajación específica ATM</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · ESPECIAL para tu ATM</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>El cierre de cada sesión. En tu caso, además, lo personalizamos para que actúe directamente sobre el bruxismo y la tensión de la mandíbula que te despierta cansada.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo (con tu adaptación específica)</strong>
+      <ol>
+        <li>Túmbate boca arriba. Piernas un poco abiertas, pies caen hacia los lados. Brazos lejos del cuerpo, palmas hacia arriba.</li>
+        <li>Cojín pequeño bajo la cabeza si lo necesitas (importante para tu cervical y mandíbula).</li>
+        <li><strong>Atención específica a la mandíbula</strong>: separa ligeramente las muelas superiores e inferiores. Lengua suave, apoyada en el suelo de la boca (no contra el paladar). Sentirás cómo la mandíbula "se rinde".</li>
+        <li>Hace un pequeño bostezo intencional si lo notas — es una de las mejores señales de activación parasimpática.</li>
+        <li>Recorrido mental: relaja conscientemente, una por una, cada zona: pies, piernas, pelvis, vientre, pecho, brazos, cuello, mandíbula, frente, cuero cabelludo.</li>
+        <li>Quédate ahí 5-10 min. NO te duermas (mucho) — el objetivo es estar consciente pero totalmente quieta.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Momento</strong>5-10 minutos · SIEMPRE al final de cada sesión de yoga</div>
+  </article>
+
+  <h3 style="color:#5a7d5e;margin-top:36px">🌙 Yoga Nidra · 1-2 veces por semana</h3>
+
+  <article class="ficha yoga">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar yoga">🧘 Pilar 1 · Yoga</span>
+        <h3>11 · Yoga Nidra de 20 minutos</h3>
+        <div class="sub">"Sueño yóguico" · regeneración profunda del SN</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Tu medicina semanal</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>El Yoga Nidra es una <strong>práctica guiada de relajación profunda</strong> en posición tumbada. No es meditación: no tienes que "concentrarte" — solo seguir la voz. Investigaciones recientes lo posicionan como una de las herramientas más eficaces para regenerar un sistema nervioso agotado: <strong>20 minutos de Nidra equivalen, en términos restauradores, a 2-3 horas de sueño profundo</strong>. Para alguien que se despierta cansada con 7-8h durmiendo, es oro puro.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Túmbate cómodamente con manta y cojín. Móvil cargado con auriculares o altavoz cerca.</li>
+        <li>Busca "Yoga Nidra 20 minutos español" en YouTube o Spotify. Te recomiendo: "Yoga Nidra para soltar emociones" o "Yoga Nidra para dormir" de canales hispanohablantes (Xuan-Lan, Elena Malova, Bienestar y Yoga tienen muy buenos).</li>
+        <li>Sigue la voz. <strong>Si te quedas dormida, perfecto — significa que tu cuerpo lo necesitaba</strong>.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Duración · Frecuencia</strong>20-30 minutos · 1-2 veces por semana (idealmente domingo y/o miércoles por la noche)</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>Durante el Nidra a veces aparecen imágenes, recuerdos o emociones — incluido el duelo. Es normal. La regla es: <strong>observar sin engancharse</strong>. Si aparece tristeza, no la rechaces ni te sumerjas: simplemente nota que está, y vuelve a la voz que guía. Es justo así como se procesan las emociones almacenadas en el cuerpo.</div>
+  </article>
+
+  <div class="sankalpa">
+    <div class="label">Tu Sankalpa · intención del programa</div>
+    <p class="frase">"Honro lo que fue.<br>Abro espacio para lo que viene.<br>Me cuido sin culpa."</p>
+  </div>
+
+  <div class="tip">
+    <strong>¿Qué es un sankalpa y cómo se usa?</strong><br>
+    "Sankalpa" significa <em>intención profunda</em> en sánscrito. No es un objetivo ni una meta — es una semilla de quién eres ya, planted en el inconsciente. Cómo se usa: <strong>al inicio de cada sesión de yoga, en silencio, repítelo mentalmente 3 veces</strong>. Lo mismo al final, en Savasana. Y, si lo recuerdas, al despertar y al dormir. La repetición regular lo va instalando como un nuevo patrón mental. Funciona — la evidencia neurocientífica sobre la repetición de afirmaciones presentes y afirmativas es muy sólida. Tu sankalpa está construido específicamente para ti, sobre los tres hilos que te conté en la carta.
+  </div>
+</div>
+</section>
+
+<!-- ============ 7. PILAR 2 — FUERZA FUNCIONAL ============ -->
+<section id="pilar-fuerza" class="sec-light" style="border-top:4px solid #c1704a">
+<div class="wrap">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px">
+    <div style="font-size:2.4rem">💪</div>
+    <div>
+      <div style="color:#c1704a;font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;font-weight:600">Pilar 2</div>
+      <h2 style="margin:0">Fuerza Funcional Suave</h2>
+    </div>
+  </div>
+  <p class="sec-sub">Suave, progresiva, sin agotarte. La fuerza es para sentirte capaz, no para terminar exhausta. En fibromialgia, esta regla es sagrada.</p>
+
+  <div class="tip">
+    <strong>¿Por qué fuerza si tienes fibromialgia?</strong><br>
+    La fibromialgia históricamente se entendió como "no se debe hacer ejercicio porque empeora". La ciencia actual dice exactamente lo contrario: <strong>el entrenamiento de fuerza progresivo y bien dosificado es una de las intervenciones más eficaces para reducir el dolor crónico en fibromialgia</strong> (Ericsson et al. 2016, Andrade et al. 2018). El mecanismo: el ejercicio regular reentrena el sistema nervioso para que deje de amplificar las señales corporales como dolor. La condición clave: dosis correcta. Si te pasas, empeoras. Por eso vamos a empezar MUY suaves y subir muy gradualmente.
+  </div>
+
+  <div class="tip" style="background:#fff3d8;border-left-color:#a35a3a">
+    <strong>⚠️ Reglas de oro de la fuerza en TU caso</strong><br>
+    <strong>1.</strong> <strong>Nunca terminar más cansada de lo que se empieza.</strong> Si al acabar la sesión te sientes peor que al empezar, te has pasado.<br>
+    <strong>2.</strong> <strong>RIR 4-5 al inicio</strong> (Reps In Reserve = repeticiones que podrías hacer más). Si haces 8 reps, deberías poder hacer 4-5 más con buena técnica. NUNCA al fallo.<br>
+    <strong>3.</strong> <strong>Si el dolor sube 24-48h después, baja el 30-40% la siguiente sesión.</strong> Esto se llama "post-exertional malaise" y es señal clarísima de exceso.<br>
+    <strong>4.</strong> <strong>Exhala SIEMPRE en el esfuerzo</strong>, inhala en la bajada. No contengas la respiración.<br>
+    <strong>5.</strong> Si los <strong>codos</strong> protestan en algún ejercicio, ese ejercicio cambia o se suspende temporalmente. La epicondilitis empeora con sobreuso, no con descanso.
+  </div>
+
+  <h3 style="color:#a35a3a;margin-top:30px">⚙️ Tu rutina de fuerza · una sola, sencilla</h3>
+  <p>A diferencia de programas más exigentes, tu pilar de fuerza tiene <strong>UNA sola rutina</strong> que vas a ir conociendo bien. Repetir es bueno: aprendes el gesto, te sientes segura, y la progresión está en subir peso o reps, no en cambiar de ejercicios todo el rato. Son <strong>5 ejercicios</strong>, 25 minutos en total. La haces 2 veces por semana, con al menos 48h entre sesiones (importante para tu fibromialgia).</p>
+
+  <article class="ficha fuerza">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar fuerza">💪 Pilar 2 · Fuerza</span>
+        <h3>1 · Sentadilla con apoyo en silla</h3>
+        <div class="sub">Sit-to-Stand · el ejercicio funcional rey</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Cuádriceps + glúteos + CORE. Es el ejercicio funcional más importante: cada vez que te levantas de una silla, lo haces. Además, en tu caso, fortalecer glúteos es CLAVE para tu lumbar cargada y tu escoliosis — un glúteo fuerte protege la espalda.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Siéntate en tu silla. Pies a la anchura de caderas, planta completa apoyada.</li>
+        <li>Brazos cruzados sobre el pecho (sin ayuda) o extendidos al frente (más fácil).</li>
+        <li>Inclínate ligeramente hacia delante con la espalda recta y <strong>EXHALA mientras te levantas</strong> empujando con los talones. Sin balanceo.</li>
+        <li>Inhala bajando despacio (3 segundos) hasta sentarte tocando la silla pero sin descansar peso.</li>
+        <li>Si necesitas ayudarte con las manos en las rodillas al subir, hazlo — es válido. Lo importante es completar las reps con buena postura.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Series · Reps · Tempo · Descanso</strong>3 series × 8 reps · Tempo 3-1-1 · Descanso 60-90 s · RIR 4-5</div>
+    <div class="bloque"><strong>📈 Progresión 6 semanas</strong>
+      <ul>
+        <li><strong>Sem 1-2:</strong> 3×8 con apoyo (tocas silla en cada rep)</li>
+        <li><strong>Sem 3-4:</strong> 3×10 sin tocar silla (te quedas a 5 cm de sentarte)</li>
+        <li><strong>Sem 5-6:</strong> 3×10 con mancuerna de 2 kg pegada al pecho (sentadilla goblet)</li>
+      </ul>
+    </div>
+    <div class="bloque"><strong>⚠️ Vigila para tu escoliosis</strong>Que las rodillas no caigan hacia dentro (signo de glúteo medio débil — exactamente lo que estamos corrigiendo). Si pasa, abre las puntas un poco más y piensa en "abrir el suelo con los pies".</div>
+  </article>
+
+  <article class="ficha fuerza">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar fuerza">💪 Pilar 2 · Fuerza</span>
+        <h3>2 · Glute Bridge con activación de glúteo medio</h3>
+        <div class="sub">Puente con banda · glúteo mayor + MEDIO (clave para tu escoliosis)</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Glúteo mayor (que estabiliza tu lumbar) + glúteo MEDIO (que es el músculo más importante en escoliosis y caderas asimétricas). La banda alrededor de los muslos añade activación específica del glúteo medio sin necesidad de pesas.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Túmbate boca arriba, rodillas dobladas, pies anchura caderas pegados al suelo.</li>
+        <li>Pon la <strong>banda elástica</strong> ligera por encima de las rodillas, en los muslos.</li>
+        <li>Mantén una ligera presión: las rodillas empujan hacia AFUERA contra la banda.</li>
+        <li>Inhala. <strong>Exhala</strong> apretando glúteos PRIMERO y subiendo la cadera hasta línea recta hombro-cadera-rodilla.</li>
+        <li>Aguanta 2 s arriba apretando, sin perder la presión lateral contra la banda.</li>
+        <li>Inhala bajando lento, 3 s, sin descansar abajo (la cadera no toca del todo el suelo entre reps).</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Series · Reps · Tempo · Descanso</strong>3 series × 10 reps · Tempo 2-2-3 · Descanso 60 s · RIR 4</div>
+    <div class="bloque"><strong>📈 Progresión 6 semanas</strong>
+      <ul>
+        <li><strong>Sem 1-2:</strong> 3×10 con banda ligera</li>
+        <li><strong>Sem 3-4:</strong> 3×12 con banda más resistente, aguanta 3 s arriba</li>
+        <li><strong>Sem 5-6:</strong> 3×8 con UNA pierna (Single-leg glute bridge), banda en muslos. Avanzado pero potente.</li>
+      </ul>
+    </div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>Activar los glúteos es activar la base de tu pelvis — el lugar donde están literalmente las raíces. Mucha mujeres aprenden a "no tener trasero" psicológicamente (a no ocupar espacio). Recuperar la conexión con los glúteos es recuperar tu derecho a estar.</div>
+  </article>
+
+  <article class="ficha fuerza">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar fuerza">💪 Pilar 2 · Fuerza</span>
+        <h3>3 · Remo con mancuerna a una mano</h3>
+        <div class="sub">Patrón: tracción horizontal · Single-Arm Row</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem a">🟡 Con adaptación para tus codos</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Espalda media + bíceps + CORE anti-rotación. Es el antagonista perfecto del trabajo de limpieza que haces (que te tiene siempre con brazos hacia delante). Devuelve los hombros a su sitio y descomprime el cuello. Trabajado bien, es muy amable con los codos.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Rodilla y mano izquierdas apoyadas en la silla. Mano derecha sostiene la mancuerna (2 kg) colgando.</li>
+        <li>Columna larga, neutra, paralela al suelo. Mirada al suelo.</li>
+        <li>Inhala. <strong>Exhala</strong> mientras tiras de la mancuerna hacia tu cintura, codo arriba-atrás, juntando escápula.</li>
+        <li>Inhala bajando controlada, sin dejar caer el peso.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Series · Reps · Tempo · Descanso</strong>3 × 8-10 reps por lado · Tempo 2-1-3 · Descanso 60-90 s · RIR 4</div>
+    <div class="bloque"><strong>📈 Progresión 6 semanas</strong>
+      <ul>
+        <li><strong>Sem 1-2:</strong> 2 kg, 3×8</li>
+        <li><strong>Sem 3-4:</strong> 3 kg, 3×10</li>
+        <li><strong>Sem 5-6:</strong> 3-4 kg, 3×10 con pausa de 2 s arriba apretando escápula</li>
+      </ul>
+    </div>
+    <div class="bloque"><strong>⚠️ Adaptación para tus codos</strong>Agarra la mancuerna con la muñeca <strong>neutra</strong> (palma mirando hacia ti, no hacia abajo). Esto descarga los tendones epicondíleos. Si en algún momento el codo da calambre, baja peso o suspende temporalmente este ejercicio y sustitúyelo por el remo con banda (igual movimiento pero más amable).</div>
+  </article>
+
+  <article class="ficha fuerza">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar fuerza">💪 Pilar 2 · Fuerza</span>
+        <h3>4 · Pallof Press con banda</h3>
+        <div class="sub">CORE anti-rotación · estabilidad funcional de la columna</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · PERFECTA para tu lumbar</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Trabaja el CORE de forma <em>funcional</em> (estabilizando la columna ante una fuerza rotacional que intenta torcerla), no como abdominales clásicos. Activa transverso, oblicuos profundos, multífidos — exactamente lo que necesita tu lumbar para no quedarse "cargada". Es probablemente el mejor ejercicio de CORE para alguien con tu perfil (escoliosis + lumbar sensible).</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Ancla la banda a la altura del esternón (pomo de puerta CERRADA con la banda al otro lado, o ata a un mueble pesado).</li>
+        <li>De pie de LADO al anclaje. Banda agarrada con ambas manos pegada al esternón.</li>
+        <li>Pies anchura caderas, ligeramente flexionados. Glúteos y CORE activos.</li>
+        <li><strong>Exhala</strong> mientras extiendes los brazos al frente. La banda intenta torcerte hacia su lado — tú resistes esa rotación.</li>
+        <li>Mantén 2 segundos. Inhala volviendo al pecho con control.</li>
+        <li>Repite todo el set por un lado. Después cambia de lado.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Series · Reps · Tempo · Descanso</strong>3 × 10 reps por lado · Tempo 2-2-2 · Descanso 45 s</div>
+    <div class="bloque"><strong>📈 Progresión 6 semanas</strong>
+      <ul>
+        <li><strong>Sem 1-2:</strong> Banda ligera, 3×8 por lado</li>
+        <li><strong>Sem 3-4:</strong> Banda media, 3×10, aguanta 3 s con brazos extendidos</li>
+        <li><strong>Sem 5-6:</strong> Banda fuerte, 3×10, pequeños "círculos" con brazos extendidos al final de cada rep</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="ficha fuerza">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar fuerza">💪 Pilar 2 · Fuerza</span>
+        <h3>5 · Bird Dog con foco asimétrico</h3>
+        <div class="sub">CORE profundo + control motor para escoliosis</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · ESPECÍFICA para tu escoliosis</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve en tu caso</strong>Activa los multífidos (músculos profundos paraespinales) y el transverso del abdomen al mismo tiempo. Pero su gran valor para ti está en que <strong>trabaja la coordinación contralateral</strong> brazo-pierna — exactamente lo que tu columna asimétrica necesita reaprender. Forma parte del McGill Big 3, los 3 ejercicios mejor estudiados para la salud de la espalda.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>A cuatro patas. Muñecas bajo hombros, rodillas bajo caderas, columna neutra (ni hundida ni encorvada).</li>
+        <li>Activa transverso suavemente (como si llevaras un cinturón apretado un poquito).</li>
+        <li><strong>Exhala</strong>: extiende brazo derecho al frente Y pierna izquierda atrás, simultáneamente. Hasta línea recta. Mantén las caderas paralelas al suelo (no se balancean).</li>
+        <li>Aguanta 2 segundos. Vuelve al centro <em>tocando codo con rodilla</em> debajo del cuerpo. Eso es una rep.</li>
+        <li>Haz todas las reps por un lado y cambia.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Series · Reps · Tempo · Descanso</strong>3 × 8 reps por lado · Tempo 2-2-2 · Descanso 45 s</div>
+    <div class="bloque"><strong>⚠️ Foco asimétrico (importante para tu escoliosis)</strong>Observa: probablemente notes claramente que un lado te sale "más fácil" que el otro — el lado convexo de tu escoliosis. Eso es tu mapa. <strong>Dedica una rep extra al lado más difícil cada serie</strong>. La regla NO es "iguálalos haciendo más fácil el difícil" — es "fortalece el difícil hasta que iguale al fácil".</div>
+  </article>
+
+  <div class="tip">
+    <strong>Patrones trabajados en esta rutina</strong><br>
+    Esta única rutina cubre los <strong>5 patrones funcionales clave</strong> para tu perfil: dominante de rodilla (sentadilla), dominante de cadera (glute bridge), tracción horizontal (remo), CORE anti-rotación (Pallof) y control motor + multífidos (Bird Dog). No necesitas más al inicio — necesitas dominar estos 5 y subir progresión.
+  </div>
+</div>
+</section>
+
+<!-- ============ 8. PILAR 3 — MOVILIDAD Y CORE PROFUNDO ============ -->
+<section id="pilar-movilidad" class="sec-warm" style="border-top:4px solid #c9a96e">
+<div class="wrap">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px">
+    <div style="font-size:2.4rem">🌀</div>
+    <div>
+      <div style="color:#a8893f;font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;font-weight:600">Pilar 3</div>
+      <h2 style="margin:0">Movilidad y CORE Profundo</h2>
+    </div>
+  </div>
+  <p class="sec-sub">El pilar técnico de tu programa. Caderas con "gomillas", lumbar cargada, escoliosis y codos — aquí están las herramientas concretas para tu cuerpo concreto.</p>
+
+  <div class="tip">
+    <strong>Tres conceptos clave que vas a usar mucho aquí</strong><br>
+    <strong>Flexibilidad vs movilidad:</strong> Flexibilidad es rango pasivo (estirar). Movilidad es rango ACTIVO con control. La movilidad es lo que el cuerpo USA en la vida real.<br>
+    <strong>CORE profundo vs CORE superficial:</strong> El CORE profundo (transverso, multífidos, diafragma, suelo pélvico) estabiliza la columna como un corsé natural. El superficial (recto abdominal) genera movimiento. Tu lumbar necesita el profundo, no abdominales clásicos.<br>
+    <strong>CARs</strong> (Controlled Articular Rotations): movimientos circulares lentos en el rango máximo de una articulación. La mejor "higiene articular" diaria.
+  </div>
+
+  <h3 style="color:#a8893f;margin-top:30px">🚿 Tu Ducha Articular diaria · 7-10 minutos</h3>
+  <p>Esta es <strong>la rutina más importante de todo tu programa</strong>. Imprescindible cada mañana o cada noche, aunque sean 5 minutos en pijama. Cuenta en la racha de gamificación aunque ese día no entrenes nada más. Es tu "vía amable" cuando el cuerpo dice "hoy no".</p>
+
+  <div class="reto" style="background:#fff;border-left-color:#c9a96e">
+    <h4 style="color:#a8893f">Secuencia de la Ducha Articular para TI</h4>
+    <p class="reto-xp">Tiempo total: 7-10 min · Cuenta como sesión válida en la racha</p>
+    <ol style="margin:8px 0 0;padding-left:24px;line-height:2;color:#4a4a6a">
+      <li><strong>CARs de muñeca</strong> · 5 círculos por dirección, cada mano (1 min) ← para tus codos</li>
+      <li><strong>CARs de hombro</strong> · 3 vueltas por dirección, cada brazo (1 min)</li>
+      <li><strong>CARs de cadera</strong> · 5 vueltas por dirección, cada pierna (1,5 min) ← CLAVE para tus "gomillas"</li>
+      <li><strong>Apertura torácica con rotación</strong> · 8 reps por lado (1,5 min) ← para tu escoliosis</li>
+      <li><strong>Respiración 360° con activación de transverso</strong> · 8 respiraciones (2 min)</li>
+      <li><strong>Estiramiento de psoas en posición de zancada</strong> · 5 respiraciones por lado (1,5 min) ← para tus "gomillas"</li>
+      <li><strong>Postura del Niño con apertura</strong> · 5 respiraciones (1 min)</li>
+    </ol>
+  </div>
+
+  <h3 style="color:#a8893f;margin-top:34px">📚 Biblioteca de ejercicios específicos para ti</h3>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌀 Pilar 3 · Movilidad</span>
+        <h3>1 · CARs de cadera (tu ejercicio estrella)</h3>
+        <div class="sub">Rotaciones controladas · CLAVE para tus caderas "con gomillas"</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · ESENCIAL para ti</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Las CARs de cadera son <strong>terapéuticas para el psoas tenso y las caderas asimétricas</strong> — movilizan activamente el glúteo medio, los rotadores profundos y la cápsula articular. Hacer estas CARs a diario, durante las próximas 6 semanas, va a empezar a desbloquear el patrón de "gomillas" que sientes en las caderas.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>De pie, una mano apoyada en la pared o en una silla para estabilidad.</li>
+        <li>Levanta la rodilla derecha al pecho (90 grados).</li>
+        <li>Abre la rodilla hacia el lateral (rotación externa de cadera) tan lejos como puedas SIN MOVER LA PELVIS. La pelvis tiene que quedarse quieta — solo se mueve el fémur.</li>
+        <li>Extiende la pierna hacia atrás (extensión).</li>
+        <li>Cierra la pierna hacia el centro.</li>
+        <li>Eso es un círculo grande y lentísimo. Repite. Después al revés.</li>
+        <li>Cambia de pierna.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>5 vueltas por dirección, cada pierna · Tempo lentísimo (cada vuelta dura 20-30 s)</div>
+    <div class="bloque"><strong>⚠️ Importante para tu asimetría</strong>Notarás claramente que una cadera "va peor" que la otra — habitual con escoliosis. Dedica <strong>una vuelta extra al lado más rígido</strong> cada vez. No fuerces el rango — respétalo y volverá.</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌀 Pilar 3 · Movilidad</span>
+        <h3>2 · Estiramiento de psoas en zancada</h3>
+        <div class="sub">Half-Kneeling Hip Flexor Stretch · libera el psoas crónicamente acortado</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · CRÍTICA para ti</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Estira directamente el psoas, el músculo del miedo y la huida que llevas tenso. Como el psoas se conecta directamente con las vértebras lumbares, soltarlo descarga la lumbar. Este es <strong>el estiramiento más importante para tu queja de "gomillas" y para tu lumbar de 8/10</strong>.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Pon una rodilla en el suelo (con una almohadilla o esterilla doblada bajo la rodilla — siempre).</li>
+        <li>La otra pierna delante, formando 90° con el pie apoyado completo en el suelo.</li>
+        <li><strong>Pelvis en retroversión</strong> (esto es CLAVE): mete el coxis hacia adelante y abajo, como si llevaras una cola entre las piernas. Sin esto, NO estiras el psoas.</li>
+        <li>Activa el glúteo de la pierna apoyada en el suelo (la de atrás). Esto aumenta el estiramiento.</li>
+        <li>Para profundizar: levanta el brazo del mismo lado que la pierna trasera y haz una pequeña flexión lateral hacia el lado contrario.</li>
+        <li>Respira 5 veces. Cambia de pierna.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>5 respiraciones por lado · 2 rondas · DIARIO si puedes</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>El psoas es, literalmente, el músculo donde se acumula el miedo y el estrés crónico. Cuando estés aquí, respira hondo y suelta. A veces aparecen sensaciones extrañas, sensaciones de "soltar" emocional. Es exactamente lo que tiene que pasar.</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌀 Pilar 3 · Movilidad</span>
+        <h3>3 · Respiración 360° con transverso del abdomen</h3>
+        <div class="sub">CORE profundo · LA BASE de la estabilidad lumbar</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · LA BASE</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Enseña a tu CORE profundo a activarse correctamente. Esto es la base de TODO: si el transverso no funciona, la lumbar se tiene que cargar. Aprender esta respiración cambia para siempre tu relación con la espalda.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Túmbate boca arriba, rodillas dobladas, pies en el suelo.</li>
+        <li>Pon una mano en las costillas inferiores laterales y la otra en el bajo vientre.</li>
+        <li>Inhala por la nariz: expande NO el pecho hacia arriba, sino las costillas inferiores hacia <strong>los lados</strong> Y hacia la <strong>espalda baja</strong>. Imagina tu tronco como un balón que se infla 360°.</li>
+        <li>Exhala lento por la boca, como si soplaras una vela. Al final del aire, <strong>activa suavemente el transverso</strong> — sentirás que el bajo vientre tira hacia dentro y arriba, sin meter tripa con violencia.</li>
+        <li>Mantén esa activación suave del transverso durante 5 segundos.</li>
+        <li>Suelta. Vuelve a empezar.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>8-10 respiraciones · 2-3 veces al día si recuerdas (en el coche, en la cama)</div>
+    <div class="bloque"><strong>📈 Progresión 6 semanas</strong>
+      <ul>
+        <li><strong>Sem 1-2:</strong> Solo tumbada. Aprender la sensación.</li>
+        <li><strong>Sem 3-4:</strong> Hacerlo sentada en silla.</li>
+        <li><strong>Sem 5-6:</strong> Hacerlo de pie. Y al final: activar transverso mientras caminas (es el santo grial — protege tu lumbar todo el día).</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌀 Pilar 3 · Movilidad</span>
+        <h3>4 · Auto-masaje de psoas y lumbar con pelota de tenis</h3>
+        <div class="sub">Liberación miofascial · descarga directa</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Las pelotas de tenis (¡que ya tienes!) son una de las herramientas más eficaces para liberar puntos gatillo. Tu lumbar cargada tiene puntos de tensión muy localizados que se sueltan en 30-60 segundos con presión sostenida.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li><strong>Para la lumbar:</strong> Túmbate boca arriba. Pon la pelota debajo de tu zona lumbar (a un lado de la columna, NUNCA encima de las vértebras). Quédate quieta 60 segundos respirando lento. Cambia al otro lado.</li>
+        <li><strong>Para los glúteos:</strong> Siéntate sobre la pelota, encima del glúteo. Rueda lentamente buscando el punto más sensible. Mantén 30-60 s en cada punto que duela "agradablemente".</li>
+        <li><strong>Para el TFL/cintilla:</strong> Túmbate de lado, pelota en la zona lateral de la cadera, justo por debajo del hueso prominente. Rueda lentamente.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>5-7 minutos · 3 veces por semana (lunes, miércoles, viernes ideal)</div>
+    <div class="bloque"><strong>⚠️ Reglas de oro</strong>El dolor debe ser "duele bien" (5-7/10) — NUNCA "duele mal" (8-10/10). Si es 10/10, te has pasado de presión. Respiración SIEMPRE relajada — si contienes la respiración, el músculo se contrae más en lugar de soltarse.</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌀 Pilar 3 · Movilidad</span>
+        <h3>5 · Movilización nerviosa de nervio cubital (para tus codos)</h3>
+        <div class="sub">Nerve gliding · específico para epicondilitis/calambres</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem a">🟡 Específico para tus codos</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Los calambres en los codos suelen tener un componente neural — el nervio cubital o el mediano se irrita por uso repetitivo y postura. Las "movilizaciones nerviosas" son ejercicios suaves que devuelven al nervio su deslizamiento normal a través de los túneles anatómicos.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>De pie. Extiende el brazo derecho a un lado, a la altura del hombro, palma hacia abajo.</li>
+        <li>Dobla la muñeca hacia arriba (dedos apuntando al techo).</li>
+        <li>Lleva la oreja izquierda hacia el hombro izquierdo (NO al derecho).</li>
+        <li>Sostén 2-3 s, vuelve. Repite 8-10 veces, suave.</li>
+        <li>Cambia de brazo.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>8-10 reps por brazo · 2-3 veces al día si los codos están especialmente sensibles</div>
+    <div class="bloque"><strong>⚠️ Si NO mejora en 4-6 semanas</strong>Te recomiendo encarecidamente una valoración con fisioterapeuta. La epicondilitis crónica responde muy bien a fisioterapia específica con ondas de choque o ejercicios excéntricos pautados. No es algo para sufrir.</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌀 Pilar 3 · Movilidad</span>
+        <h3>6 · Movilización de mandíbula y cuello para tu ATM</h3>
+        <div class="sub">Auto-masaje + estiramiento específico · bruxismo nocturno</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · ESPECIAL para tu ATM</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Reduce la tensión de los músculos masticadores (maseteros y temporales) que aprietas durante el día y especialmente por la noche. Hacerlo antes de dormir reduce significativamente el bruxismo nocturno.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li><strong>Masaje de maseteros</strong>: con la yema de los dedos, masajea con presión circular suave la zona de las mejillas (debajo de los pómulos, donde aprietas al apretar los dientes). 60 segundos.</li>
+        <li><strong>Estiramiento de mandíbula</strong>: abre la boca al máximo sin forzar, mantén 5 segundos. Cierra. Repite 5 veces.</li>
+        <li><strong>Movilizaciones laterales</strong>: desliza la mandíbula a la derecha, mantén 3 s. Al centro. Izquierda, mantén 3 s. Al centro. 5 veces.</li>
+        <li><strong>Estiramiento cervical lateral</strong>: oreja derecha al hombro derecho, mano derecha tira muy suave. 30 segundos por lado.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>5 minutos · TODAS LAS NOCHES antes de dormir · y al despertar si has dormido tensa</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>La mandíbula es uno de los lugares más expresivos del cuerpo. Aprietas la mandíbula cuando aguantas en silencio. Tener la mandíbula relajada es, literalmente, una práctica de "no tener que aguantar todo". Mientras la masajeas, suelta también un suspiro audible. Funciona.</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌀 Pilar 3 · Movilidad</span>
+        <h3>7 · Apertura torácica con foam roller</h3>
+        <div class="sub">Movilidad dorsal · descompresión postural completa</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Devuelve movilidad a la columna torácica (la dorsal media), lugar donde más rigidez se acumula por estar agachada limpiando. Recuperar esta movilidad descomprime la lumbar y mejora la profundidad de tu respiración (importante para tu pranayama).</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Pon el foam roller en el suelo en horizontal. Túmbate de espaldas SOBRE el foam, perpendicular a él, de modo que apoye debajo de tus omóplatos (entre los hombros y el final de las costillas).</li>
+        <li>Rodillas dobladas, pies en el suelo. Manos detrás de la nuca con codos hacia los lados, NO al techo.</li>
+        <li>Inhala. <strong>Exhala</strong> dejándote caer hacia atrás sobre el foam, abriendo el pecho hacia el techo, dejando la cabeza ir hacia el suelo (no fuerces, deja).</li>
+        <li>Inhala volviendo al centro.</li>
+        <li>Repite. Después mueve el foam un poco arriba o abajo y trabaja otra zona dorsal.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>8-10 reps · 2-3 zonas diferentes · 3 veces por semana</div>
+    <div class="bloque"><strong>⚠️ Importante</strong>NO pongas el foam en la zona lumbar (es perjudicial — la lumbar ya está extendida, comprimirla más es contraproducente). SOLO desde el final de las costillas hacia arriba.</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌀 Pilar 3 · Movilidad</span>
+        <h3>8 · Dead Bug</h3>
+        <div class="sub">CORE profundo + control motor · ejercicio del McGill Big 3</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Enseña al CORE profundo a mantener la columna estable mientras los brazos y piernas se mueven (que es como trabaja en la vida real, no como en los abdominales de gimnasio). Parte del McGill Big 3, los ejercicios mejor estudiados para la salud lumbar.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Túmbate boca arriba. Brazos al techo, piernas levantadas con rodillas a 90° y muslos verticales (posición "bicho muerto").</li>
+        <li><strong>Pega la lumbar al suelo</strong> activando el transverso. Esta es la postura inicial — la mantienes TODO el ejercicio.</li>
+        <li>Exhala: baja simultáneamente el brazo derecho hacia detrás de tu cabeza Y extiende la pierna izquierda hacia el frente, sin tocar el suelo. La lumbar debe seguir pegada al suelo.</li>
+        <li>Si la lumbar se despega, NO bajes tanto el brazo/pierna. Trabaja en el rango donde mantienes el control.</li>
+        <li>Inhala volviendo al centro. Cambia de lado.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>3 series × 8 reps alternando · Tempo lento</div>
+    <div class="bloque"><strong>📈 Progresión 6 semanas</strong>
+      <ul>
+        <li><strong>Sem 1-2:</strong> Solo brazos (sin mover piernas)</li>
+        <li><strong>Sem 3-4:</strong> Brazo + pierna contralateral</li>
+        <li><strong>Sem 5-6:</strong> Brazo + pierna con mancuerna ligera en mano (1-2 kg)</li>
+      </ul>
+    </div>
+  </article>
+
+</div>
+</section>
+
+<!-- ============ 9. PILAR 4 — MOVIMIENTO NATURAL ============ -->
+<section id="pilar-calistenia" class="sec-light" style="border-top:4px solid #2c3e50">
+<div class="wrap">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px">
+    <div style="font-size:2.4rem">🤸</div>
+    <div>
+      <div style="color:#2c3e50;font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;font-weight:600">Pilar 4 · El rato juguetón</div>
+      <h2 style="margin:0">Movimiento Natural</h2>
+    </div>
+  </div>
+  <p class="sec-sub">El pilar más pequeño en volumen, el más grande en filosofía. Aquí entrenamos algo que tu perfeccionismo no quiere reconocer: <strong>moverse sin objetivo, por puro disfrute</strong>.</p>
+
+  <div class="tip">
+    <strong>¿Qué es el movimiento natural?</strong><br>
+    <strong>Movimiento natural</strong> (estilo MovNat, desarrollado por Erwan Le Corre) es la vuelta a los gestos básicos de la especie humana: cuadrupedia, gateos, transiciones suelo-pie, locomociones animales (oso, cangrejo, gato), equilibrio. Es el "vocabulario" que nuestro cuerpo usó durante cien mil años antes de inventar las sillas. Tu cuestionario dice que tienes <strong>equilibrio 9/10, puedes hacer una sentadilla profunda y caminar 30 minutos sin fatigarte</strong>. Esa base es excelente — vamos a aprovecharla con ejercicios sencillos pero muy completos.
+  </div>
+
+  <div class="tip" style="background:#fff;border-left-color:#7a9e7e">
+    <strong>Filosofía de este pilar PARA TI</strong><br>
+    Para alguien como tú, que has aprendido a hacer todo "como toca" — limpia, cuida, perfeccionismo — este pilar es <strong>el antídoto</strong>. No hay "como toca" en el movimiento animal. Está bien hacerlo "regular". Está bien probar y no salirte. Está bien reírte. Está bien que tus hijas te vean haciéndolo. Está bien improvisar. Aquí <strong>practicas soltar el control</strong> mientras te mueves. Es psicología somática en directo.
+  </div>
+
+  <h3 style="color:#2c3e50;margin-top:30px">📚 Biblioteca de ejercicios · Nivel 2 (intermedio amable)</h3>
+
+  <article class="ficha calistenia">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar calistenia">🤸 Pilar 4 · Movimiento</span>
+        <h3>1 · Marcha del Oso (Bear Crawl) lenta</h3>
+        <div class="sub">Cuadrupedia activa · coordinación contralateral</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve</strong>Hombros, CORE en estabilización constante, glúteos, coordinación contralateral. Para tu cuerpo con tendencia a la rigidez por el trabajo de limpieza, es un "reset" cerebral además de físico. Reactiva patrones de coordinación que se pierden con la vida adulta sedentaria.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Posición de "mesa": cuadrupedia con rodillas a 1-2 cm del suelo (sin tocarlo).</li>
+        <li>Espalda neutra — ni hundida ni encorvada. Imagínate un vaso de agua entre los omóplatos.</li>
+        <li>Avanza moviendo MANO DERECHA + RODILLA IZQUIERDA simultáneamente (patrón contralateral, como una marcha animal).</li>
+        <li>Después MANO IZQUIERDA + RODILLA DERECHA. Mantén las caderas estables (sin oscilar).</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Series · Reps · Descanso</strong>3 series × 10-15 pasos (5-8 por lado) · Descanso 60-90 s · LENTO</div>
+    <div class="bloque"><strong>⚠️ Adaptación para tus codos</strong>Si los codos se cargan en cuadrupedia, hazlo con los antebrazos apoyados en el suelo (en lugar de las manos) — versión "elbow plank crawl". Reduce mucho la carga.</div>
+    <div class="bloque"><strong>📈 Progresión 6 semanas</strong>Empezar con 10 pasos, llegar a 20 en la sem 6. Si te resulta muy fácil, prueba hacerlo hacia atrás (más exigente para el CORE).</div>
+  </article>
+
+  <article class="ficha calistenia">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar calistenia">🤸 Pilar 4 · Movimiento</span>
+        <h3>2 · Equilibrio monopodal con ojos cerrados</h3>
+        <div class="sub">Propiocepción avanzada · aprovechas tu equilibrio 9/10</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · LA APROVECHAS BIEN</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Tu equilibrio es 9/10 — es uno de tus mayores activos. Trabajar equilibrio con ojos cerrados <strong>obliga al cerebro a usar otras fuentes de información</strong> (propiocepción, sistema vestibular) y construye reservas neurológicas que te van a proteger toda la vida de caídas y de demencia (sí, la evidencia entre equilibrio y salud cerebral es muy sólida).</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>De pie, cerca de una pared o silla por si necesitas apoyo.</li>
+        <li>Levanta la rodilla derecha al nivel de la cadera. Pie izquierdo firme en el suelo.</li>
+        <li>Mantén con OJOS ABIERTOS 30 segundos.</li>
+        <li>Si lo dominas, <strong>cierra los ojos</strong> y mantén 10-20 segundos.</li>
+        <li>Cambia de pierna.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>3 reps por pierna · 2-3 veces por semana</div>
+    <div class="bloque"><strong>📈 Progresión 6 semanas</strong>
+      <ul>
+        <li><strong>Sem 1-2:</strong> 30 s ojos abiertos, 10 s cerrados</li>
+        <li><strong>Sem 3-4:</strong> 30 s ojos cerrados</li>
+        <li><strong>Sem 5-6:</strong> 30 s ojos cerrados + mover la cabeza muy lenta de un lado a otro mientras te equilibras</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="ficha calistenia">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar calistenia">🤸 Pilar 4 · Movimiento</span>
+        <h3>3 · Squat profundo sostenido (Asian Squat)</h3>
+        <div class="sub">La sentadilla profunda · postura ancestral</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura · ¡YA PUEDES!</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Tu cuestionario dice que ya puedes hacer una sentadilla profunda. Eso es una capacidad que pierden la mayoría de adultos europeos a partir de los 30 — y es altísimamente correlativa con la salud articular de cadera, rodilla y tobillo a largo plazo. Sostenerla 1-2 minutos al día <em>conserva</em> esta capacidad y, además, <strong>abre activamente la cadera</strong> (otra herramienta para tus "gomillas").</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>De pie. Pies anchura caderas o un poco más, puntas ligeramente hacia fuera.</li>
+        <li>Baja en sentadilla lo más abajo posible (talones idealmente en el suelo, glúteos cerca de los talones).</li>
+        <li>Quédate ahí. Las manos pueden estar en posición de oración, apoyadas en el suelo entre las piernas, o donde te sea más cómodo.</li>
+        <li>Respira tranquila durante el tiempo objetivo.</li>
+        <li>Para salir, apoya manos en el suelo y empuja con las piernas para subir.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>1-2 minutos · 1 vez al día (idealmente: antes de cepillarte los dientes, lo conviertes en hábito)</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>En muchas culturas no occidentales, esta es la postura de descanso normal — el squat asiático. Es la postura en la que se cuenta, se habla con vecinos, se come, se espera. Recuperar la capacidad de pasar tiempo aquí es recuperar un derecho ancestral del cuerpo humano. Y casualmente, abre las caderas como ninguna otra cosa.</div>
+  </article>
+
+  <article class="ficha calistenia">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar calistenia">🤸 Pilar 4 · Movimiento</span>
+        <h3>4 · Transición sentada-a-pie sin manos (Sit-Rise Test)</h3>
+        <div class="sub">Indicador clínico de longevidad · evalúa función global</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Segura</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>El Sit-Rise Test es uno de los <strong>indicadores clínicos de longevidad mejor estudiados</strong> en personas a partir de los 40 (Brito et al. 2014, European Journal of Preventive Cardiology). Cuanto menos apoyos necesites para sentarte en el suelo y volver a levantarte, mejores son tus marcadores generales de longevidad. Trabajarlo entrena fuerza global, equilibrio, movilidad y CORE al mismo tiempo.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>De pie, descalza, espacio libre alrededor.</li>
+        <li>Siéntate en el suelo con piernas cruzadas <strong>sin usar las manos</strong>, sin apoyar rodillas, sin desequilibrarte demasiado.</li>
+        <li>Una vez sentada, <strong>levántate también sin manos, sin rodillas en el suelo y sin desequilibrarte</strong>.</li>
+        <li>Si te falla algo (apoyas mano, te tambaleas), perfecto — es información. Inténtalo otra vez con más control.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>3-5 reps · 2 veces por semana</div>
+    <div class="bloque"><strong>📈 Tu reto personal</strong>Día 1: ¿cuántos apoyos has necesitado? (cuenta cada mano, cada rodilla, cada desequilibrio como 1 apoyo). Apunta en el diario. Sem 6: vuelve a hacerlo. Tu objetivo es bajar el número. Lo lograrás.</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>Bajar al suelo y subir sin ayuda es un acto de <strong>autonomía física</strong>. Cada vez que lo haces, le estás diciendo a tu cuerpo "puedo sola". A nivel inconsciente, ese mensaje cuenta.</div>
+  </article>
+
+  <article class="ficha calistenia">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar calistenia">🤸 Pilar 4 · Movimiento</span>
+        <h3>5 · Movimiento libre · 3 minutos por día</h3>
+        <div class="sub">Improvisación corporal · soltar perfeccionismo</div>
+      </div>
+      <div class="badges-row"><span class="badge-sem v">🟢 Tu mejor ejercicio anti-rumiación</span></div>
+    </div>
+    <div class="bloque"><strong>🎯 Para qué sirve EN TU CASO</strong>Para alguien con rumiación mental constante y perfeccionismo, este es probablemente <strong>el ejercicio más terapéutico del programa entero</strong>. La improvisación libre desactiva el córtex prefrontal (donde vive el "tengo que", "debería") y activa zonas de procesamiento emocional. Es danzaterapia hecha en casa, gratis, sin testigos.</div>
+    <div class="bloque"><strong>📋 Cómo ejecutarlo</strong>
+      <ol>
+        <li>Pon una canción que te guste. Una. Solo una. Que dure 3-5 minutos.</li>
+        <li>Cierra la puerta. Sola. Sin cámara. Sin testigos. Sin hijas.</li>
+        <li><strong>Muévete como te dé la gana</strong> a la música. Bailar, dar vueltas, balancearte, hacer cualquier cosa. No importa "cómo queda". No es para nadie.</li>
+        <li>Si la mente intenta organizarte ("esto está bien, esto está mal"), llévala a la sensación del cuerpo moviéndose. La sensación, no la imagen.</li>
+        <li>Cuando termine la canción, para. Respira. Observa cómo te sientes.</li>
+      </ol>
+    </div>
+    <div class="bloque"><strong>⚙️ Dosis</strong>3-5 minutos · 2-3 veces por semana · MÍNIMO 1 vez por semana</div>
+    <div class="bloque"><strong>🌿 Conexión cuerpo-emoción</strong>Tu cuestionario dice <em>"depende del día. A veces necesito silencio, a veces actividad"</em>. Eso es información de tu cuerpo, no debilidad. Hay días que la música de este ejercicio será suave (acoge) y otros que será rítmica (descarga). Confía en lo que te pide cada día. Ese acto de confiar en lo que tu cuerpo necesita es <strong>exactamente lo que vamos a entrenar</strong>.</div>
+  </article>
+
+</div>
+</section>
+
+<!-- ============ 10. GAMIFICACIÓN ============ -->
+<section id="gamificacion" style="background:#1a1f2e;color:#faf7f2;padding:50px 20px">
+<div class="wrap">
+  <h2 style="font-family:Georgia,serif;color:#c9a96e;font-size:1.85rem;text-align:center;margin-bottom:6px">🎮 Tu Progreso</h2>
+  <p style="text-align:center;color:#888899;font-style:italic;margin-bottom:34px">El mapa de tu transformación. Aquí se hace visible lo invisible.</p>
+
+  <div class="tip" style="background:rgba(13,17,23,0.5);border-left-color:#c9a96e;color:#d8d4c5">
+    <strong style="color:#c9a96e">Importante para ti, Paqui</strong><br>
+    Este sistema NO es para puntuarte ni juzgarte. Tu perfeccionismo va a intentar usarlo en tu contra ("no estoy haciendo bastante"). <strong>Si notas que te genera presión, ciérralo</strong>. Una racha rota no es un fracaso. Un día sin XP no es un día perdido. Eres bienvenida a usar el programa sin tocar esta sección — funciona igual. Y si te apetece usarlo, recuerda: <em>aquí solo compites contigo. Y la única regla es ser honesta</em>.
+  </div>
+
+  <!-- BLOQUE 1: NIVEL + XP -->
+  <div style="background:#0d1117;border:1px solid #2c3e50;border-radius:12px;padding:22px;margin-bottom:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px">
+      <div>
+        <div style="color:#888899;font-size:0.78rem;text-transform:uppercase;letter-spacing:2px">Nivel actual</div>
+        <div id="km-level-name" style="font-family:Georgia,serif;color:#c9a96e;font-size:1.55rem;margin-top:4px">Iniciada</div>
+      </div>
+      <div style="text-align:right">
+        <div style="color:#888899;font-size:0.78rem">XP total</div>
+        <div id="km-xp-total" style="color:#faf7f2;font-size:2rem;font-weight:600">0</div>
+      </div>
+    </div>
+    <div style="margin-top:18px;background:#2c3e50;border-radius:10px;height:12px;overflow:hidden">
+      <div id="km-xp-bar" style="background:#c9a96e;height:100%;width:0%;transition:width .6s"></div>
+    </div>
+    <div id="km-xp-next" style="color:#888899;font-size:0.85rem;margin-top:8px">500 XP para Aprendiz</div>
+  </div>
+
+  <!-- BLOQUE 2: RACHA, SESIONES Y MEDALLAS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:18px">
+    <div style="background:#0d1117;border:1px solid #2c3e50;border-radius:12px;padding:18px;text-align:center">
+      <div style="font-size:2.2rem">🔥</div>
+      <div id="km-streak" style="font-size:1.9rem;color:#c1704a;font-weight:600">0</div>
+      <div style="color:#888899;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px">Días seguidos</div>
+    </div>
+    <div style="background:#0d1117;border:1px solid #2c3e50;border-radius:12px;padding:18px;text-align:center">
+      <div style="font-size:2.2rem">📅</div>
+      <div id="km-total-sessions" style="font-size:1.9rem;color:#7a9e7e;font-weight:600">0</div>
+      <div style="color:#888899;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px">Sesiones totales</div>
+    </div>
+    <div style="background:#0d1117;border:1px solid #2c3e50;border-radius:12px;padding:18px;text-align:center">
+      <div style="font-size:2.2rem">🏅</div>
+      <div id="km-badges-count" style="font-size:1.9rem;color:#c9a96e;font-weight:600">0</div>
+      <div style="color:#888899;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px">Medallas</div>
+    </div>
+  </div>
+
+  <!-- BLOQUE 3: BOTONES DE REGISTRO -->
+  <div style="background:#0d1117;border:1px solid #2c3e50;border-radius:12px;padding:22px;margin-bottom:18px">
+    <h3 style="color:#c9a96e;font-family:Georgia,serif;margin-top:0;font-size:1.15rem">Registrar sesión de hoy</h3>
+    <p style="color:#888899;font-size:0.85rem;margin:6px 0 16px">Pulsa el botón al terminar cada sesión. Tu progreso queda guardado en este navegador.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px">
+      <button onclick="kmAddXP(15,'yoga')" style="background:#7a9e7e;color:#fff;border:0;padding:12px;border-radius:9px;font-weight:600;cursor:pointer;font-family:inherit;line-height:1.3">🧘 Yoga 15min<br><small style="font-weight:400;opacity:0.85">+15 XP</small></button>
+      <button onclick="kmAddXP(30,'yoga')" style="background:#7a9e7e;color:#fff;border:0;padding:12px;border-radius:9px;font-weight:600;cursor:pointer;font-family:inherit;line-height:1.3">🧘 Yoga 30min<br><small style="font-weight:400;opacity:0.85">+30 XP</small></button>
+      <button onclick="kmAddXP(60,'fuerza')" style="background:#c1704a;color:#fff;border:0;padding:12px;border-radius:9px;font-weight:600;cursor:pointer;font-family:inherit;line-height:1.3">💪 Fuerza<br><small style="font-weight:400;opacity:0.85">+60 XP</small></button>
+      <button onclick="kmAddXP(40,'movilidad')" style="background:#c9a96e;color:#fff;border:0;padding:12px;border-radius:9px;font-weight:600;cursor:pointer;font-family:inherit;line-height:1.3">🌀 Movilidad<br><small style="font-weight:400;opacity:0.85">+40 XP</small></button>
+      <button onclick="kmAddXP(30,'calistenia')" style="background:#2c3e50;color:#fff;border:1px solid #c9a96e;padding:12px;border-radius:9px;font-weight:600;cursor:pointer;font-family:inherit;line-height:1.3">🤸 Movimiento<br><small style="font-weight:400;opacity:0.85">+30 XP</small></button>
+      <button onclick="kmAddXP(10,'ducha')" style="background:#888899;color:#fff;border:0;padding:12px;border-radius:9px;font-weight:600;cursor:pointer;font-family:inherit;line-height:1.3">🚿 Ducha articular<br><small style="font-weight:400;opacity:0.85">+10 XP</small></button>
+      <button onclick="kmAddXP(30,'nidra')" style="background:#1a1f2e;color:#c9a96e;border:1px solid #c9a96e;padding:12px;border-radius:9px;font-weight:600;cursor:pointer;font-family:inherit;line-height:1.3">🌙 Yoga Nidra<br><small style="font-weight:400;opacity:0.85">+30 XP</small></button>
+      <button onclick="kmAddXP(15,'express')" style="background:#4a4a6a;color:#fff;border:0;padding:12px;border-radius:9px;font-weight:600;cursor:pointer;font-family:inherit;line-height:1.3">🕯️ Modo Express<br><small style="font-weight:400;opacity:0.85">+15 XP</small></button>
+    </div>
+    <button onclick="kmReset()" style="background:transparent;color:#888899;border:1px solid #2c3e50;padding:8px 14px;border-radius:8px;font-size:0.78rem;cursor:pointer;margin-top:16px;font-family:inherit">↺ Reiniciar contador</button>
+  </div>
+
+  <!-- BLOQUE 4: MEDALLAS -->
+  <div style="background:#0d1117;border:1px solid #2c3e50;border-radius:12px;padding:22px;margin-bottom:18px">
+    <h3 style="color:#c9a96e;font-family:Georgia,serif;margin-top:0;font-size:1.15rem">Tus medallas</h3>
+    <p style="color:#888899;font-size:0.85rem;margin:6px 0 14px">Se desbloquean automáticamente según tu progreso. Las grises aún no las has ganado.</p>
+    <div id="km-badges-list" style="display:flex;flex-wrap:wrap;gap:9px"></div>
+  </div>
+
+  <!-- BLOQUE 5: RUEDA RADAR -->
+  <div style="background:#0d1117;border:1px solid #2c3e50;border-radius:12px;padding:22px">
+    <h3 style="color:#c9a96e;font-family:Georgia,serif;margin-top:0;font-size:1.15rem">Rueda de competencias</h3>
+    <p style="color:#888899;font-size:0.85rem;margin-bottom:16px">Autoevalúa cada dimensión del 1 al 10 cada semana. Verás tu evolución frente a tu punto de partida (línea discontinua).</p>
+    <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:18px">
+      <div data-dim="fuerza"><label style="display:flex;justify-content:space-between;color:#faf7f2;font-size:0.88rem">💪 Fuerza <span class="km-dim-val" style="color:#c9a96e">5</span></label><input type="range" min="1" max="10" value="5" oninput="kmUpdateDim(this,'fuerza')" style="width:100%;accent-color:#c1704a"></div>
+      <div data-dim="movilidad"><label style="display:flex;justify-content:space-between;color:#faf7f2;font-size:0.88rem">🌀 Movilidad <span class="km-dim-val" style="color:#c9a96e">5</span></label><input type="range" min="1" max="10" value="5" oninput="kmUpdateDim(this,'movilidad')" style="width:100%;accent-color:#c9a96e"></div>
+      <div data-dim="equilibrio"><label style="display:flex;justify-content:space-between;color:#faf7f2;font-size:0.88rem">⚖️ Equilibrio <span class="km-dim-val" style="color:#c9a96e">5</span></label><input type="range" min="1" max="10" value="5" oninput="kmUpdateDim(this,'equilibrio')" style="width:100%;accent-color:#2c3e50"></div>
+      <div data-dim="energia"><label style="display:flex;justify-content:space-between;color:#faf7f2;font-size:0.88rem">⚡ Energía <span class="km-dim-val" style="color:#c9a96e">5</span></label><input type="range" min="1" max="10" value="5" oninput="kmUpdateDim(this,'energia')" style="width:100%;accent-color:#c9a96e"></div>
+      <div data-dim="calma"><label style="display:flex;justify-content:space-between;color:#faf7f2;font-size:0.88rem">🌊 Calma · Sistema Nervioso <span class="km-dim-val" style="color:#c9a96e">5</span></label><input type="range" min="1" max="10" value="5" oninput="kmUpdateDim(this,'calma')" style="width:100%;accent-color:#7a9e7e"></div>
+      <div data-dim="conexion"><label style="display:flex;justify-content:space-between;color:#faf7f2;font-size:0.88rem">💗 Conexión con el cuerpo <span class="km-dim-val" style="color:#c9a96e">5</span></label><input type="range" min="1" max="10" value="5" oninput="kmUpdateDim(this,'conexion')" style="width:100%;accent-color:#c1704a"></div>
+    </div>
+    <button onclick="kmSaveWeek()" style="background:#c9a96e;color:#0d1117;border:0;padding:12px 24px;border-radius:8px;font-weight:600;cursor:pointer;width:100%;font-family:inherit;font-size:0.95rem">Guardar evaluación de esta semana</button>
+    <canvas id="km-radar" width="400" height="400" style="width:100%;max-width:400px;display:block;margin:22px auto 0"></canvas>
+  </div>
+
+  <!-- RETOS POR SEMANA -->
+  <h3 style="color:#c9a96e;font-family:Georgia,serif;margin-top:40px;text-align:center;font-size:1.3rem">📜 Tus retos semanales</h3>
+  <p style="text-align:center;color:#888899;font-size:0.9rem;margin-bottom:24px;font-style:italic">Marca cada casilla cuando la completes. Cada reto cerrado vale 50 XP extra. Y recuerda: <strong>NO pasa nada si no terminas todas las casillas</strong>. El reto es para ti, no contra ti.</p>
+
+  <div class="reto" style="background:#0d1117;color:#faf7f2;border-left-color:#7a9e7e">
+    <h4 style="color:#c9a96e">Semana 1 · "Aparecer"</h4>
+    <p class="reto-xp" style="color:#7a9e7e">+50 XP al completar · Fase 1: Adaptación</p>
+    <label style="color:#faf7f2"><input type="checkbox"> Hacer la ducha articular 4 días esta semana (aunque sean 5 min)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Practicar respiración 4-7-8 antes de dormir 3 noches</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Completar 1 sesión de yoga corta (15-20 min)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Repetir tu sankalpa 3 veces seguidas antes de empezar cada sesión</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Hacer el Sit-Rise Test al menos 1 vez y anotar resultado en el diario</label>
+  </div>
+
+  <div class="reto" style="background:#0d1117;color:#faf7f2;border-left-color:#7a9e7e">
+    <h4 style="color:#c9a96e">Semana 2 · "Reconocerme capaz"</h4>
+    <p class="reto-xp" style="color:#7a9e7e">+50 XP al completar · Fase 1: Adaptación</p>
+    <label style="color:#faf7f2"><input type="checkbox"> Hacer la sesión de fuerza completa una vez (con 5 ejercicios, RIR 4-5)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Hacer Viparita Karani (piernas en la pared) 3 días seguidos</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Beber un vaso de agua al levantarte y otro al acostarte (paso 1 hidratación)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Un día decir NO a una tarea no urgente para hacer tu sesión</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Notar 1 cambio físico positivo y anotarlo en el diario</label>
+  </div>
+
+  <div class="reto" style="background:#0d1117;color:#faf7f2;border-left-color:#c1704a">
+    <h4 style="color:#c9a96e">Semana 3 · "Notar el cambio"</h4>
+    <p class="reto-xp" style="color:#c1704a">+50 XP al completar · Fase 2: Consolidación</p>
+    <label style="color:#faf7f2"><input type="checkbox"> Hacer 1 sesión de Yoga Nidra de 20 min (puedes buscarlo en YouTube)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Auto-masaje con pelota de tenis para lumbar y glúteos 2 veces</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Estiramiento de psoas diario en zancada (al menos 5 días)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Anotar 1 día cómo te sientes ANTES y DESPUÉS de una sesión (compara)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Subir +1 rep en algún ejercicio de fuerza</label>
+  </div>
+
+  <div class="reto" style="background:#0d1117;color:#faf7f2;border-left-color:#c1704a">
+    <h4 style="color:#c9a96e">Semana 4 · "Cuidarme sin culpa"</h4>
+    <p class="reto-xp" style="color:#c1704a">+50 XP al completar · Fase 2: Consolidación</p>
+    <label style="color:#faf7f2"><input type="checkbox"> Hacer la práctica de movimiento libre (3-5 min de baile) 1 vez. SOLA. Sin testigos.</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Un día completo con los 4 pilares tocados (aunque sean breves)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Si has dejado algo "sin hacer" para entrenar, escribe en el diario "me he cuidado sin culpa"</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Investigar 1 psicólogo/a en tu zona (no es obligatorio llamar — solo investigar)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Hacer la respiración 360° estando sentada en el coche/sofá al menos 3 veces</label>
+  </div>
+
+  <div class="reto" style="background:#0d1117;color:#faf7f2;border-left-color:#c9a96e">
+    <h4 style="color:#c9a96e">Semana 5 · "Profundizar"</h4>
+    <p class="reto-xp" style="color:#c9a96e">+50 XP al completar · Fase 3: Profundización</p>
+    <label style="color:#faf7f2"><input type="checkbox"> Subir un nivel en algún ejercicio (peso, reps o tempo)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Probar el squat asiático 1 minuto sostenido</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Hacer una sesión SIN consultar este documento (lo que tu cuerpo te pida)</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Equilibrio monopodal ojos cerrados 30 s en cada pie</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Compartir con alguien cercano cómo te sientes con el programa</label>
+  </div>
+
+  <div class="reto" style="background:#0d1117;color:#faf7f2;border-left-color:#c9a96e">
+    <h4 style="color:#c9a96e">Semana 6 · "Lo que se queda contigo"</h4>
+    <p class="reto-xp" style="color:#c9a96e">+50 XP al completar · Fase 3: Profundización</p>
+    <label style="color:#faf7f2"><input type="checkbox"> Diseñar TÚ una sesión combinando tus ejercicios favoritos del programa</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Hacer el Sit-Rise Test otra vez y comparar con el resultado de Semana 1</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Cierre del diario con honestidad: ¿qué me llevo de estas 6 semanas?</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Identificar 3 hábitos del programa que vas a mantener "para siempre"</label>
+    <label style="color:#faf7f2"><input type="checkbox"> Celebrar el cierre contigo: lo que sea (un baño largo, un café especial, una llamada, un paseo sola sin móvil...)</label>
+  </div>
+</div>
+</section>
+
+<script>
+(function(){
+  const STORAGE_KEY='km_paqui_flores_v1';
+  const RETOS_KEY='km_paqui_flores_retos_v1';
+  const LEVELS=[
+    {name:'Iniciada',threshold:0},
+    {name:'Aprendiz',threshold:500},
+    {name:'Practicante',threshold:1500},
+    {name:'Maestra',threshold:3500}
+  ];
+  const BADGE_LIST=[
+    {id:'primera',name:'Primera vez',icon:'🌱',check:d=>d.totalSessions>=1},
+    {id:'semana',name:'Una semana entera',icon:'🔥',check:d=>d.streak>=7},
+    {id:'dos_sem',name:'Dos semanas',icon:'⚡',check:d=>d.streak>=14},
+    {id:'mes',name:'Mes vivido',icon:'🏔️',check:d=>d.streak>=30},
+    {id:'trimestre',name:'Trimestre transformador',icon:'🌟',check:d=>d.streak>=90},
+    {id:'sereno',name:'Serena',icon:'🌙',check:d=>(d.sessionsByType.nidra||0)>=3},
+    {id:'presencia',name:'Presencia',icon:'🪷',check:d=>(d.sessionsByType.yoga||0)>=15},
+    {id:'vagal',name:'Vagal',icon:'🌊',check:d=>d.totalSessions>=14},
+    {id:'fuerte',name:'Cuerpo capaz',icon:'💪',check:d=>(d.sessionsByType.fuerza||0)>=8},
+    {id:'ducha',name:'Ritual diario',icon:'🚿',check:d=>(d.sessionsByType.ducha||0)>=14},
+    {id:'completo',name:'Día completo',icon:'🌀',check:d=>d.totalSessions>=25},
+    {id:'volver',name:'Volver tras una caída',icon:'🌅',check:d=>d.returnedAfterBreak===true}
+  ];
+  function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||defaultData()}catch(e){return defaultData()}}
+  function save(d){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(d))}catch(e){}}
+  function defaultData(){return{xp:0,streak:0,totalSessions:0,lastDate:null,sessionsByType:{},badges:[],weeklyAssessments:[],currentDim:{fuerza:5,movilidad:5,equilibrio:5,energia:5,calma:5,conexion:5},returnedAfterBreak:false}}
+  function todayStr(){return new Date().toISOString().slice(0,10)}
+  function daysBetween(a,b){if(!a||!b)return Infinity;const ms=new Date(b)-new Date(a);return Math.floor(ms/(1000*60*60*24))}
+  function getLevel(xp){let lvl=LEVELS[0];for(const l of LEVELS){if(xp>=l.threshold)lvl=l}return lvl}
+  function getNextLevel(xp){for(const l of LEVELS){if(l.threshold>xp)return l}return null}
+
+  window.kmAddXP=function(amount,type){
+    const d=load();const today=todayStr();const gap=daysBetween(d.lastDate,today);
+    if(d.lastDate!==today){
+      if(gap===1)d.streak+=1;
+      else if(gap>1){if(gap>=7)d.returnedAfterBreak=true;d.streak=1;}
+      else if(d.lastDate===null)d.streak=1;
+      d.lastDate=today;
+    }
+    d.xp+=amount;d.totalSessions+=1;
+    d.sessionsByType[type]=(d.sessionsByType[type]||0)+1;
+    if(d.streak===7)d.xp+=20;
+    if(d.streak===30)d.xp+=100;
+    if(d.streak===60)d.xp+=200;
+    if(d.streak===90)d.xp+=500;
+    for(const b of BADGE_LIST){if(!d.badges.includes(b.id)&&b.check(d))d.badges.push(b.id)}
+    save(d);render();flashMessage('+'+amount+' XP');
+  };
+  window.kmUpdateDim=function(input,dim){
+    const d=load();d.currentDim[dim]=parseInt(input.value);
+    input.parentElement.querySelector('.km-dim-val').textContent=input.value;
+    save(d);drawRadar();
+  };
+  window.kmSaveWeek=function(){
+    const d=load();d.weeklyAssessments.push({date:todayStr(),values:{...d.currentDim}});
+    save(d);drawRadar();flashMessage('Evaluación de la semana guardada 🌿');
+  };
+
+  window.kmConfirm=function(mensaje, callback){
+    const back=document.createElement('div');
+    back.style.cssText='position:fixed;inset:0;background:rgba(13,17,23,0.85);z-index:99998;display:flex;align-items:center;justify-content:center;padding:20px;font-family:-apple-system,sans-serif';
+    const box=document.createElement('div');
+    box.style.cssText='background:#1a1f2e;border:1px solid #c9a96e;border-radius:14px;padding:28px;max-width:420px;width:100%;color:#faf7f2;box-shadow:0 10px 40px rgba(0,0,0,0.5)';
+    box.innerHTML=
+      '<h3 style="font-family:Georgia,serif;color:#c9a96e;margin:0 0 12px;font-size:1.2rem">¿Estás segura?</h3>'+
+      '<p style="margin:0 0 22px;line-height:1.6;color:#d8d4c5;font-size:0.95rem">'+mensaje+'</p>'+
+      '<div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">'+
+        '<button id="km-cancel" style="background:transparent;color:#888899;border:1px solid #2c3e50;padding:10px 18px;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.9rem">Cancelar</button>'+
+        '<button id="km-ok" style="background:#c1704a;color:#fff;border:0;padding:10px 18px;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.9rem">Sí, reiniciar</button>'+
+      '</div>';
+    back.appendChild(box);
+    document.body.appendChild(back);
+    document.getElementById('km-cancel').onclick=()=>back.remove();
+    document.getElementById('km-ok').onclick=()=>{back.remove();callback();};
+    back.onclick=(e)=>{if(e.target===back)back.remove();};
+  };
+
+  window.kmReset=function(){
+    window.kmConfirm('Vas a borrar XP, medallas, racha, evaluaciones del radar y casillas de retos. No se puede deshacer.', ()=>{
+      try{localStorage.removeItem(STORAGE_KEY)}catch(e){}
+      try{localStorage.removeItem(RETOS_KEY)}catch(e){}
+      document.querySelectorAll('#gamificacion [data-dim] input[type=range]').forEach(r=>{
+        r.value=5;
+        const span=r.parentElement.querySelector('.km-dim-val');
+        if(span) span.textContent='5';
+      });
+      document.querySelectorAll('#gamificacion .reto input[type=checkbox]').forEach(c=>{
+        c.checked=false;
+      });
+      render();
+      flashMessage('Progreso reiniciado ↺');
+    });
+  };
+
+  function flashMessage(msg){
+    const el=document.createElement('div');
+    el.textContent=msg;
+    el.style.cssText='position:fixed;top:20px;right:20px;background:#c9a96e;color:#0d1117;padding:12px 20px;border-radius:8px;font-weight:600;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.3);font-family:-apple-system,sans-serif';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),2200);
+  }
+
+  function loadRetos(){try{return JSON.parse(localStorage.getItem(RETOS_KEY))||{}}catch(e){return{}}}
+  function saveRetos(r){try{localStorage.setItem(RETOS_KEY,JSON.stringify(r))}catch(e){}}
+  function initRetos(){
+    const retos=loadRetos();
+    document.querySelectorAll('#gamificacion .reto input[type=checkbox]').forEach((cb,i)=>{
+      const id='reto_'+i;
+      cb.dataset.retoId=id;
+      if(retos[id])cb.checked=true;
+      cb.addEventListener('change',()=>{
+        const r=loadRetos();
+        if(cb.checked)r[id]=true;else delete r[id];
+        saveRetos(r);
+      });
+    });
+  }
+
+  function render(){
+    const d=load();const lvl=getLevel(d.xp);const next=getNextLevel(d.xp);
+    document.getElementById('km-level-name').textContent=lvl.name;
+    document.getElementById('km-xp-total').textContent=d.xp;
+    document.getElementById('km-streak').textContent=d.streak;
+    document.getElementById('km-total-sessions').textContent=d.totalSessions;
+    document.getElementById('km-badges-count').textContent=d.badges.length;
+    if(next){
+      const pct=((d.xp-lvl.threshold)/(next.threshold-lvl.threshold))*100;
+      document.getElementById('km-xp-bar').style.width=Math.min(100,pct)+'%';
+      document.getElementById('km-xp-next').textContent=(next.threshold-d.xp)+' XP para '+next.name;
+    } else {
+      document.getElementById('km-xp-bar').style.width='100%';
+      document.getElementById('km-xp-next').textContent='¡Nivel máximo alcanzado!';
+    }
+    const list=document.getElementById('km-badges-list');list.innerHTML='';
+    for(const b of BADGE_LIST){
+      const earned=d.badges.includes(b.id);
+      const div=document.createElement('div');
+      div.style.cssText='background:'+(earned?'#c9a96e':'#2c3e50')+';color:'+(earned?'#0d1117':'#888899')+';padding:9px 13px;border-radius:9px;font-size:0.82rem;display:flex;align-items:center;gap:7px;'+(earned?'':'opacity:0.55;');
+      div.innerHTML='<span style="font-size:1.3rem">'+b.icon+'</span> '+b.name;
+      list.appendChild(div);
+    }
+    drawRadar();
+  }
+
+  function drawRadar(){
+    const canvas=document.getElementById('km-radar');
+    if(!canvas)return;
+    const ctx=canvas.getContext('2d');
+    ctx.clearRect(0,0,400,400);
+    const cx=200,cy=200,r=130;
+    const dims=['fuerza','movilidad','equilibrio','energia','calma','conexion'];
+    const labels=['Fuerza','Movilidad','Equilibrio','Energía','Calma','Conexión'];
+    const angles=dims.map((_,i)=>(-Math.PI/2)+i*(Math.PI*2/6));
+    for(let g=2;g<=10;g+=2){
+      ctx.beginPath();
+      for(let i=0;i<6;i++){
+        const x=cx+Math.cos(angles[i])*r*(g/10);
+        const y=cy+Math.sin(angles[i])*r*(g/10);
+        if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+      }
+      ctx.closePath();ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.stroke();
+    }
+    for(let i=0;i<6;i++){
+      ctx.beginPath();ctx.moveTo(cx,cy);
+      ctx.lineTo(cx+Math.cos(angles[i])*r,cy+Math.sin(angles[i])*r);
+      ctx.strokeStyle='rgba(255,255,255,0.12)';ctx.stroke();
+    }
+    ctx.fillStyle='#c9a96e';ctx.font='12px sans-serif';ctx.textAlign='center';
+    for(let i=0;i<6;i++){
+      const x=cx+Math.cos(angles[i])*(r+22);
+      const y=cy+Math.sin(angles[i])*(r+22)+4;
+      ctx.fillText(labels[i],x,y);
+    }
+    const d=load();
+    if(d.weeklyAssessments.length>0){
+      const first=d.weeklyAssessments[0].values;
+      ctx.beginPath();
+      for(let i=0;i<6;i++){
+        const v=first[dims[i]]/10;
+        const x=cx+Math.cos(angles[i])*r*v;
+        const y=cy+Math.sin(angles[i])*r*v;
+        if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+      }
+      ctx.closePath();ctx.strokeStyle='#888899';ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+    }
+    ctx.beginPath();
+    for(let i=0;i<6;i++){
+      const v=d.currentDim[dims[i]]/10;
+      const x=cx+Math.cos(angles[i])*r*v;
+      const y=cy+Math.sin(angles[i])*r*v;
+      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.fillStyle='rgba(201,169,110,0.28)';ctx.fill();
+    ctx.strokeStyle='#c9a96e';ctx.lineWidth=2;ctx.stroke();
+  }
+  document.addEventListener('DOMContentLoaded',()=>{render();initRetos();});
+  setTimeout(()=>{render();initRetos();},100);
+})();
+
+function irA(id){
+  const el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+
+<!-- ============ 11. CALENDARIO ============ -->
+<section id="calendario" class="sec-warm">
+<div class="wrap">
+  <h2>📅 Tu Calendario en 3 fases</h2>
+  <p class="sec-sub">Seis semanas estructuradas en tres fases. Cada una sube un escalón. La intensidad sube por <em>volumen y profundidad</em>, no por dureza — la fibromialgia exige progresión paciente.</p>
+
+  <div class="tip">
+    <strong>Cómo leer tu calendario</strong><br>
+    <strong>RPE</strong> = Esfuerzo Percibido (1-10). 6 = "puedo hablar de corrido". 7 = "puedo hablar entrecortado". 8 = "solo palabras sueltas". Nunca pasamos de 8 contigo, y casi siempre nos quedamos en 6-7.<br>
+    <strong>Tus sesiones son de 20-30 min</strong>, en el momento del día que te venga (por la mañana antes del trabajo, en una pausa, por la noche antes de dormir). El cuerpo agradece la consistencia más que la hora.<br>
+    <strong>5 días/sem</strong>: idealmente lunes-viernes O lunes-martes-jueves-viernes-sábado. Lo que mejor encaje con las tardes de las niñas.
+  </div>
+
+  <h3 style="color:#a35a3a;margin-top:32px">🌱 Fase 1 · Semanas 1-2 · Adaptación</h3>
+  <p style="font-size:0.93rem;color:#5a4a3a"><strong>Objetivo:</strong> que tu cuerpo y tu agenda conozcan el programa. Suave. Sin presión. RPE máximo 6. Lo importante es <strong>aparecer</strong>.</p>
+  <table class="cal-tabla">
+    <thead><tr><th>Día</th><th>Pilar</th><th>Sesión</th><th>Tiempo</th><th>RPE</th></tr></thead>
+    <tbody>
+      <tr class="yoga"><td><strong>Lunes</strong></td><td><span class="cal-pill" style="background:#7a9e7e">Yoga</span></td><td>Pranayama 4-7-8 + 5 asanas suaves + Viparita Karani + Savasana</td><td>20 min</td><td>5</td></tr>
+      <tr class="movilidad"><td><strong>Martes</strong></td><td><span class="cal-pill" style="background:#c9a96e">Movilidad</span></td><td>Ducha articular completa + estiramiento psoas + CARs cadera</td><td>20 min</td><td>5</td></tr>
+      <tr class="fuerza"><td><strong>Miércoles</strong></td><td><span class="cal-pill" style="background:#c1704a">Fuerza</span></td><td>5 ejercicios de fuerza con cargas mínimas · RIR 5</td><td>25 min</td><td>6</td></tr>
+      <tr class="descanso"><td><strong>Jueves</strong></td><td><span class="cal-pill" style="background:#888899">Descanso activo</span></td><td>Paseo tranquilo 20 min o solo ducha articular</td><td>15-20 min</td><td>3</td></tr>
+      <tr class="yoga"><td><strong>Viernes</strong></td><td><span class="cal-pill" style="background:#7a9e7e">Yoga</span></td><td>Nadi Shodhana + 6 asanas + Setu Bandhasana + Savasana ATM</td><td>25 min</td><td>5</td></tr>
+      <tr class="movilidad"><td><strong>Sábado</strong></td><td><span class="cal-pill" style="background:#c9a96e">Movilidad</span></td><td>Pelota tenis lumbar + foam roller torácico + dead bug</td><td>20 min</td><td>5</td></tr>
+      <tr class="descanso"><td><strong>Domingo</strong></td><td><span class="cal-pill" style="background:#1a1f2e;color:#c9a96e">Nidra</span></td><td>Yoga Nidra guiado · 20 min · antes de dormir</td><td>20 min</td><td>1</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="color:#a35a3a;margin-top:32px">🌿 Fase 2 · Semanas 3-4 · Consolidación</h3>
+  <p style="font-size:0.93rem;color:#5a4a3a"><strong>Objetivo:</strong> el cuerpo ya ha cogido el ritmo. Subimos volumen, no intensidad. Aparece el Movimiento Natural. RPE 6-7.</p>
+  <table class="cal-tabla">
+    <thead><tr><th>Día</th><th>Pilar</th><th>Sesión</th><th>Tiempo</th><th>RPE</th></tr></thead>
+    <tbody>
+      <tr class="yoga"><td><strong>Lunes</strong></td><td><span class="cal-pill" style="background:#7a9e7e">Yoga</span></td><td>Pranayama + secuencia completa 7 asanas + Yoga Nidra corto</td><td>30 min</td><td>5</td></tr>
+      <tr class="fuerza"><td><strong>Martes</strong></td><td><span class="cal-pill" style="background:#c1704a">Fuerza</span></td><td>Rutina de fuerza · progresión sem 3-4 · RIR 4</td><td>30 min</td><td>6-7</td></tr>
+      <tr class="movilidad"><td><strong>Miércoles</strong></td><td><span class="cal-pill" style="background:#c9a96e">Movilidad</span></td><td>Ducha articular + Bird Dog asimétrico + apertura torácica foam</td><td>25 min</td><td>6</td></tr>
+      <tr class="calistenia"><td><strong>Jueves</strong></td><td><span class="cal-pill" style="background:#2c3e50">Movimiento</span></td><td>Bear Crawl + equilibrio + squat asiático sostenido</td><td>20 min</td><td>6</td></tr>
+      <tr class="yoga"><td><strong>Viernes</strong></td><td><span class="cal-pill" style="background:#7a9e7e">Yoga</span></td><td>Restaurativo: Supta Baddha + Balasana + piernas en pared larga</td><td>30 min</td><td>4</td></tr>
+      <tr class="movilidad"><td><strong>Sábado</strong></td><td><span class="cal-pill" style="background:#c9a96e">Movilidad</span></td><td>Movilizaciones nervio cubital + masaje ATM + estiramiento psoas</td><td>20 min</td><td>5</td></tr>
+      <tr class="descanso"><td><strong>Domingo</strong></td><td><span class="cal-pill" style="background:#1a1f2e;color:#c9a96e">Nidra + libre</span></td><td>Movimiento libre 5 min + Yoga Nidra 20 min</td><td>25 min</td><td>3</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="color:#a35a3a;margin-top:32px">🌳 Fase 3 · Semanas 5-6 · Profundización</h3>
+  <p style="font-size:0.93rem;color:#5a4a3a"><strong>Objetivo:</strong> ya eres practicante. Conoces tu cuerpo en este programa. Subimos progresiones. Llegamos al final celebrando lo recorrido. RPE 7-8 puntual en fuerza, todo lo demás 5-6.</p>
+  <table class="cal-tabla">
+    <thead><tr><th>Día</th><th>Pilar</th><th>Sesión</th><th>Tiempo</th><th>RPE</th></tr></thead>
+    <tbody>
+      <tr class="yoga"><td><strong>Lunes</strong></td><td><span class="cal-pill" style="background:#7a9e7e">Yoga</span></td><td>Secuencia completa + apertura torácica + Yoga Nidra</td><td>30 min</td><td>5</td></tr>
+      <tr class="fuerza"><td><strong>Martes</strong></td><td><span class="cal-pill" style="background:#c1704a">Fuerza</span></td><td>Rutina de fuerza · progresión final · RIR 3-4 · cargas máximas</td><td>30 min</td><td>7-8</td></tr>
+      <tr class="calistenia"><td><strong>Miércoles</strong></td><td><span class="cal-pill" style="background:#2c3e50">Movimiento</span></td><td>Sit-Rise Test + equilibrio ojos cerrados + movimiento libre</td><td>25 min</td><td>6</td></tr>
+      <tr class="movilidad"><td><strong>Jueves</strong></td><td><span class="cal-pill" style="background:#c9a96e">Movilidad</span></td><td>Sesión integrada: ducha + pelota + foam + dead bug</td><td>30 min</td><td>6</td></tr>
+      <tr class="fuerza"><td><strong>Viernes</strong></td><td><span class="cal-pill" style="background:#c1704a">Fuerza</span></td><td>Rutina suave de mantenimiento + Pallof + Bird Dog</td><td>25 min</td><td>6</td></tr>
+      <tr class="yoga"><td><strong>Sábado</strong></td><td><span class="cal-pill" style="background:#7a9e7e">Yoga</span></td><td>Sesión TUYA: las asanas que más bien te hayan hecho estas semanas</td><td>30 min</td><td>5</td></tr>
+      <tr class="descanso"><td><strong>Domingo</strong></td><td><span class="cal-pill" style="background:#1a1f2e;color:#c9a96e">Cierre</span></td><td>Yoga Nidra + escribir cierre del diario + celebración personal</td><td>30 min</td><td>2</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip" style="background:#fff;border-left-color:#7a9e7e;margin-top:30px">
+    <strong>🕯️ Modo Express · Para los días que no puedas (CUENTA igual)</strong><br>
+    Hay días que cuidar a las niñas, limpiar las casas o el simple agotamiento de fibromialgia te van a dejar sin las energías de una sesión normal. Estos son los días que más importan. <strong>El Modo Express de 12 minutos cuenta exactamente igual en tu racha y en tus XP</strong>. La fórmula:<br><br>
+    <strong>1 min</strong> · Respiración 4-7-8 (4 ciclos) en cualquier sitio<br>
+    <strong>2 min</strong> · CARs de cadera + estiramiento de psoas (1 lado cada uno)<br>
+    <strong>3 min</strong> · Sentadilla apoyada en silla x 8 + glute bridge con banda x 10<br>
+    <strong>2 min</strong> · Gato-Vaca lento + Balasana<br>
+    <strong>4 min</strong> · Piernas en la pared (Viparita Karani) <strong>OBLIGATORIA</strong><br><br>
+    Que sea de "menos minutos" no significa que sea menos importante. <strong>En tu caso, el Modo Express es más importante que la sesión completa</strong> — porque demuestra que el programa cabe en tu vida real, no solo en los días buenos.
+  </div>
+</div>
+</section>
+
+<!-- ============ 12. HÁBITOS ============ -->
+<section id="habitos" class="sec-light">
+<div class="wrap">
+  <h2>🌿 Hábitos que sostienen el cuerpo entre sesiones</h2>
+  <p class="sec-sub">Los hábitos diarios pesan más, a la larga, que el entrenamiento. Aquí los más relevantes para tu perfil concreto. Empieza por uno o dos — no todos a la vez.</p>
+
+  <div class="habitos-list">
+
+    <div class="habito" style="border-top-color:#5a7da3">
+      <h4>💧 Hidratación progresiva</h4>
+      <p>Tu cuestionario dice "bebo poca agua". En fibromialgia, la deshidratación amplifica el dolor. <strong>Plan suave:</strong> un vaso al despertar + uno antes de cada comida + uno antes de dormir. Sin más esfuerzo. Si te cuesta el agua sola, agua con limón o infusión flojita. Sube poco a poco.</p>
+    </div>
+
+    <div class="habito" style="border-top-color:#1a1f2e">
+      <h4>🌙 Higiene del sueño anti-bruxismo</h4>
+      <p>Despiertas cansada con 7-8h. El sueño es <em>profundidad</em>, no solo cantidad. Las 3 reglas: <strong>1)</strong> Luz tenue + nada de pantallas la última hora; <strong>2)</strong> Habitación fresca (18-20°) y oscura del todo; <strong>3)</strong> Masaje ATM 5 min + respiración 4-7-8 cada noche en la cama. Va a cambiar tu mañana.</p>
+    </div>
+
+    <div class="habito" style="border-top-color:#7a9e7e">
+      <h4>🌬️ Salir del bucle de rumiación</h4>
+      <p>Cuando notes que llevas 15 min dando vueltas a lo mismo, prueba la técnica de <strong>nombrar la rumiación</strong>: en voz alta o mental, dí "estoy rumiando sobre X". Acto seguido haz 3 respiraciones 4-7-8 y vuelve al presente. No discutas con la rumiación — solo nómbrala. Funciona porque saca el contenido del bucle inconsciente.</p>
+    </div>
+
+    <div class="habito" style="border-top-color:#c1704a">
+      <h4>🚫 Decir NO a una tarea al día</h4>
+      <p>Para alguien con tu perfeccionismo, decir NO a algo es un ejercicio terapéutico tan potente como el yoga. <strong>Reto:</strong> cada día, identificar UNA cosa que "deberías" hacer y NO hacerla deliberadamente. La cocina puede esperar un día. La compra. Llamar a esa persona. Lo que sea. La culpa que aparezca es información — pero no es una orden.</p>
+    </div>
+
+    <div class="habito" style="border-top-color:#c9a96e">
+      <h4>🌅 Ritual matinal mínimo</h4>
+      <p>3 minutos al despertar antes de mirar el móvil. <strong>Secuencia:</strong> bebes el vaso de agua → 4 respiraciones 4-7-8 → repites tu sankalpa 3 veces → un pequeño estiramiento donde notes tensión. Esto te ancla el día en TI antes de empezar a cuidar a otros.</p>
+    </div>
+
+    <div class="habito" style="border-top-color:#888899">
+      <h4>⏸️ Micro-paradas durante el trabajo</h4>
+      <p>Limpiando casas durante horas → cuerpo tenso en patrón. <strong>Plan:</strong> cada 30-40 min, parada de 60 segundos. Una respiración 4-7-8. CARs de muñeca para los codos. Estiramiento lateral de cuello para la ATM. Un sorbo de agua. Estos 60 segundos cada media hora cambian el cansancio acumulado del día.</p>
+    </div>
+
+    <div class="habito" style="border-top-color:#7a9e7e">
+      <h4>🍃 Alimentación sin culpa</h4>
+      <p>Con intolerancia a lactosa y fructosa, tu cuerpo ya lleva su gestión. <strong>Tres reglas básicas:</strong> 1) Proteína en cada comida (mejor saciedad, menos picos), 2) Vegetales abundantes (sin abusar de los altos en fructosa: manzana, pera, mango), 3) Comer despacio (en fibromialgia, la digestión es delicada). Sin restricciones — tu objetivo aquí NO es perder peso, es nutrirte.</p>
+    </div>
+
+    <div class="habito" style="border-top-color:#c9a96e">
+      <h4>💗 Tiempo a solas no negociable</h4>
+      <p>Dos veces por semana, <strong>15 minutos sola sin móvil</strong>. Lo que sea — ducha larga, leer, mirar por la ventana, café. Para ti, que has dedicado tantos años a otros, esto no es lujo: es medicina. Apúntalo en la agenda como cualquier otra cita.</p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ============ 13. SUPLEMENTACIÓN ============ -->
+<section id="suplementacion" class="sec-warm">
+<div class="wrap">
+  <h2>🌱 Suplementación y fitoterapia segura para ti</h2>
+  <p class="sec-sub">Suplementación cruzada con tu medicación actual (Bilastina + Relvar) y con tus intolerancias (lactosa + fructosa). Todo lo que aparece aquí es seguro en tu perfil.</p>
+
+  <div class="aviso" style="margin-bottom:24px">
+    <div class="ico">⚕️</div>
+    <div>
+      <h3>Importante antes de empezar cualquier suplemento</h3>
+      <p>Consulta con tu médico de cabecera o farmacéutico antes de introducir cualquier suplemento, incluso natural. Las indicaciones de abajo son una guía profesional pero NO sustituyen criterio médico personalizado. Empieza por uno solo y ve añadiendo escalonadamente (esperar 2 semanas entre uno y otro para identificar cualquier reacción).</p>
+    </div>
+  </div>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌱 Suplemento prioritario</span>
+        <h3>1 · Magnesio bisglicinato</h3>
+        <div class="sub">El suplemento más útil en tu perfil concreto</div>
+      </div>
+    </div>
+    <div class="bloque"><strong>¿Por qué para ti?</strong>Es <strong>el suplemento estrella para fibromialgia + ansiedad + sueño + bruxismo</strong> — los 4 a la vez. El magnesio bisglicinato cruza barrera hematoencefálica (relajación del SN) y es el que mejor se absorbe sin diarrea. En fibromialgia hay evidencia consistente de mejora del dolor y la calidad del sueño.</div>
+    <div class="bloque"><strong>Cómo tomarlo</strong>200-400 mg al día, en la cena o 30 min antes de dormir. <strong>Sin lactosa</strong> (lee etiqueta — las marcas Solgar, Now Foods y Lamberts son seguras). Hazlo durante 3 meses y reevalúa.</div>
+    <div class="bloque"><strong>⚠️ Vigila</strong>Si en los primeros días notas deposiciones más blandas, baja a 200 mg. No combines con otros suplementos de magnesio.</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌱 Suplemento prioritario</span>
+        <h3>2 · Omega 3 (EPA + DHA)</h3>
+        <div class="sub">Antiinflamatorio sistémico · neuroprotector</div>
+      </div>
+    </div>
+    <div class="bloque"><strong>¿Por qué para ti?</strong>La fibromialgia tiene un componente neuroinflamatorio bajo grado. El omega 3 (especialmente EPA) reduce esa inflamación. Además mejora el ánimo (efecto antidepresivo demostrado en metaanálisis) y es neuroprotector — relevante con tus duelos y rumiación.</div>
+    <div class="bloque"><strong>Cómo tomarlo</strong>1.000-2.000 mg/día de EPA+DHA combinados (ratio EPA:DHA al menos 2:1). Con una comida que contenga algo de grasa para mejor absorción. Marca: busca certificación IFOS o Friend of the Sea (pureza). NORDIC NATURALS o NOW Ultra Omega-3 son seguras.</div>
+    <div class="bloque"><strong>⚠️ Vigila</strong>Si tomas anticoagulantes (no es tu caso), consulta médico. Conserva en nevera tras abrir.</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌱 Suplemento prioritario</span>
+        <h3>3 · Vitamina D3 + K2</h3>
+        <div class="sub">Sistema inmune · ánimo · masa ósea de cara a la perimenopausia</div>
+      </div>
+    </div>
+    <div class="bloque"><strong>¿Por qué para ti?</strong>En España, la mayoría de mujeres tienen déficit de vitamina D — y el déficit está asociado a más dolor en fibromialgia, peor ánimo y peor sueño. A los 45 años, además, empieza a importar la salud ósea de cara a la perimenopausia. La K2 dirige el calcio al hueso (no a las arterias).</div>
+    <div class="bloque"><strong>Cómo tomarlo</strong>2.000 UI de D3 + 100 mcg de K2 (mejor MK-7) al día, con una comida con grasa. <strong>IMPORTANTE: pídele al médico una analítica de vitamina D antes</strong> — si tienes déficit (lo más probable), puede pautarte dosis de carga. NO autosuplementes a ciegas si no sabes tu nivel basal.</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌿 Fitoterapia · adaptógeno</span>
+        <h3>4 · Ashwagandha (KSM-66)</h3>
+        <div class="sub">Adaptógeno · regulador del cortisol</div>
+      </div>
+    </div>
+    <div class="bloque"><strong>¿Por qué para ti?</strong>La ashwagandha es el adaptógeno mejor estudiado para reducir cortisol y mejorar la calidad del sueño en personas con estrés crónico. Reduce ansiedad significativamente. Compatible con bilastina sin interferencias.</div>
+    <div class="bloque"><strong>Cómo tomarla</strong>300-600 mg de extracto estandarizado KSM-66 al día, por la noche con la cena. Hazla en ciclos: 3 meses con / 1 mes sin. Marcas seguras: Sensoril o KSM-66 (busca esos nombres en la etiqueta).</div>
+    <div class="bloque"><strong>⚠️ Importante</strong>Es de la familia de las solanáceas y puede dar reacción cruzada en personas alérgicas. Empieza por la mitad de dosis los 3 primeros días. Si notas algo raro, suspende. NO usar si tienes problemas tiroideos (no es tu caso, pero por si acaso).</div>
+  </article>
+
+  <article class="ficha movilidad">
+    <div class="ficha-head">
+      <div>
+        <span class="badge-pilar movilidad">🌿 Fitoterapia · opcional</span>
+        <h3>5 · L-Teanina (opcional, para días concretos)</h3>
+        <div class="sub">Aminoácido del té verde · calma sin sedación</div>
+      </div>
+    </div>
+    <div class="bloque"><strong>¿Por qué para ti?</strong>La L-teanina produce ondas alfa cerebrales (estado de "alerta relajada") sin sedar. Útil para días de ansiedad puntual o noches en las que la mente no para. NO crea dependencia, NO produce somnolencia residual.</div>
+    <div class="bloque"><strong>Cómo tomarla</strong>200 mg cuando lo necesites — antes de dormir si la mente no para, o en momento de ansiedad aguda. Puntual. No es de tomar a diario.</div>
+  </article>
+
+  <!-- BLOQUE DESCARTES OBLIGATORIO -->
+  <div class="tip" style="background:#fff3d8;border-left-color:#a35a3a;margin-top:30px">
+    <strong>🚫 Lo que YO DESCARTO para ti (importante saberlo)</strong><br><br>
+    En internet vas a leer sobre suplementos "milagrosos" para fibromialgia. Te dejo lo que NO recomiendo para tu caso concreto, para que si los ves por ahí sepas pasar de largo:<br><br>
+    <strong>• Hipérico (Hierba de San Juan):</strong> es un antidepresivo natural — pero INTERFIERE con muchísimos medicamentos. Aunque tú actualmente no tomas antidepresivos, si en algún momento un psicólogo te recomienda iniciarlos, el hipérico es incompatible.<br><br>
+    <strong>• Pomelo (y zumo de pomelo) como "fitoterapia":</strong> aunque no es suplemento, te lo nombro porque inhibe el citocromo CYP3A4 que metaboliza muchos fármacos. Mejor evitar.<br><br>
+    <strong>• Regaliz / Glycyrrhiza:</strong> sube tensión arterial. Aunque tengas tensión normal, no es necesario y tiene riesgo innecesario.<br><br>
+    <strong>• Ginseng (Panax):</strong> es estimulante. Justo lo contrario de lo que tu SN necesita.<br><br>
+    <strong>• 5-HTP:</strong> precursor de serotonina, sí — pero con interacciones complejas. NO tomarlo nunca con antidepresivos. Si en algún momento empiezas tratamiento psicológico/psiquiátrico farmacológico, este se DESCARTA totalmente.<br><br>
+    <strong>• Cualquier suplemento "para fibromialgia" en formato gummy/jarabe con FRUCTOSA:</strong> léete SIEMPRE la etiqueta. Tu intolerancia a la fructosa te excluye de los formatos "gummy".<br><br>
+    <strong>• Suplementos lácteos (proteína de suero/whey):</strong> tu intolerancia a la lactosa los excluye. Si en algún momento valoramos suplementar proteína, lo hacemos con proteína vegetal aislada (guisante o arroz).<br><br>
+    <strong>• Vitamina C en altas dosis (>500 mg/día):</strong> en personas con intolerancia a la fructosa, dosis altas pueden empeorar síntomas digestivos. Mantén la C dietética (cítricos en cantidades normales) y suplementa solo si hay déficit demostrado.
+  </div>
+</div>
+</section>
+
+<!-- ============ 14. LECTURAS ============ -->
+<section id="lecturas" class="sec-light">
+<div class="wrap">
+  <h2>📚 7 lecturas que acompañan tu proceso</h2>
+  <p class="sec-sub">Libros que conectan con lo que has venido a trabajar. No son tareas — son compañeros. Lee el que te llame, en el orden que quieras.</p>
+
+  <div class="libro">
+    <h4>El cuerpo lleva la cuenta</h4>
+    <p class="aut">Bessel van der Kolk</p>
+    <p>El libro fundamental para entender por qué tu cuerpo guarda los duelos, los traumas y el estrés crónico. Te ayuda a entender que la fibromialgia, el dolor lumbar y el bruxismo no son "fallos del cuerpo" sino el cuerpo recordando. Lectura imprescindible si solo lees uno.</p>
+  </div>
+
+  <div class="libro">
+    <h4>Cuando el cuerpo dice no</h4>
+    <p class="aut">Gabor Maté</p>
+    <p>Habla de cómo el rol de cuidadora compulsiva, el perfeccionismo y la incapacidad de decir NO acaban manifestándose en enfermedades crónicas. Para ti es casi diagnóstico — lo vas a leer asintiendo en cada página. Comprensión + alivio.</p>
+  </div>
+
+  <div class="libro">
+    <h4>Sé amable contigo mismo</h4>
+    <p class="aut">Kristin Neff</p>
+    <p>Manual práctico de autocompasión escrito por la investigadora más importante del campo. Para tu perfeccionismo y tu exigencia interna, este libro es un antídoto suave pero potente. Tiene ejercicios concretos que puedes integrar en tu sesión de yoga.</p>
+  </div>
+
+  <div class="libro">
+    <h4>Sanar el trauma</h4>
+    <p class="aut">Peter Levine</p>
+    <p>Levine, creador de Somatic Experiencing, explica cómo el cuerpo guarda y procesa las experiencias difíciles. Particularmente útil para tu historia con tu madre desde la infancia — un libro sin culpas, sin victimismo, con herramientas concretas.</p>
+  </div>
+
+  <div class="libro">
+    <h4>Sobre el duelo y el dolor</h4>
+    <p class="aut">Elisabeth Kübler-Ross y David Kessler</p>
+    <p>Para acompañar tu duelo doble. Sin frases hechas, sin "el tiempo lo cura todo". Una mirada profunda y honesta sobre cómo se vive y se atraviesa la pérdida. Léelo despacio.</p>
+  </div>
+
+  <div class="libro">
+    <h4>El don de la imperfección</h4>
+    <p class="aut">Brené Brown</p>
+    <p>Justo lo opuesto a tu perfeccionismo. Te enseña que tu valor no está en lo bien que cumplas — sino en aparecer auténtica. Es un libro corto, ligero y muy potente. Te va a hacer reír y llorar a partes iguales.</p>
+  </div>
+
+  <div class="libro">
+    <h4>Hábitos atómicos</h4>
+    <p class="aut">James Clear</p>
+    <p>Manual práctico para que los pequeños cambios que vas a hacer estas 6 semanas se queden contigo después. La idea central: pequeños cambios sostenidos producen transformaciones grandes. Perfecto para tu fase de mantenimiento post-programa.</p>
+  </div>
+</div>
+</section>
+
+<!-- ============ 15. DIARIO INTERACTIVO ============ -->
+<section id="diario" class="sec-warm">
+<div class="wrap">
+  <h2>📖 Tu Diario · 6 semanas</h2>
+  <p class="sec-sub">Tu espejo semanal. Aquí escribes lo que pasa, no lo que "debería" pasar. Se guarda automáticamente en este navegador. Puedes imprimirlo en cualquier momento.</p>
+
+  <div class="tip">
+    <strong>Cómo usar el diario</strong><br>
+    Cada día, al terminar tu sesión (o antes de dormir), rellena la fila correspondiente. <strong>No tienes que llenar todas las casillas</strong> — pon lo que te apetezca. Las más importantes para tu perfil concreto son <em>Dolor lumbar+caderas</em>, <em>Sensación emocional</em> y <em>Notas</em>. Lo demás, si quieres.
+  </div>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:24px 0">
+    <button class="sem-btn" data-sem="1" onclick="mostrarSemana(1)" style="background:#c9a96e;color:#0d1117;border:0;padding:9px 18px;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit">Semana 1</button>
+    <button class="sem-btn" data-sem="2" onclick="mostrarSemana(2)" style="background:#888899;color:#fff;border:0;padding:9px 18px;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit">Semana 2</button>
+    <button class="sem-btn" data-sem="3" onclick="mostrarSemana(3)" style="background:#888899;color:#fff;border:0;padding:9px 18px;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit">Semana 3</button>
+    <button class="sem-btn" data-sem="4" onclick="mostrarSemana(4)" style="background:#888899;color:#fff;border:0;padding:9px 18px;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit">Semana 4</button>
+    <button class="sem-btn" data-sem="5" onclick="mostrarSemana(5)" style="background:#888899;color:#fff;border:0;padding:9px 18px;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit">Semana 5</button>
+    <button class="sem-btn" data-sem="6" onclick="mostrarSemana(6)" style="background:#888899;color:#fff;border:0;padding:9px 18px;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit">Semana 6</button>
+  </div>
+
+  <div style="overflow-x:auto">
+    <table class="diario" id="tabla-diario">
+      <thead>
+        <tr id="cabecera-diario"><th class="col1">Semana <span id="num-sem">1</span></th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="col1">Sesión hecha</td><td contenteditable="true" data-f="sesion" data-d="lun"></td><td contenteditable="true" data-f="sesion" data-d="mar"></td><td contenteditable="true" data-f="sesion" data-d="mie"></td><td contenteditable="true" data-f="sesion" data-d="jue"></td><td contenteditable="true" data-f="sesion" data-d="vie"></td><td contenteditable="true" data-f="sesion" data-d="sab"></td><td contenteditable="true" data-f="sesion" data-d="dom"></td></tr>
+        <tr><td class="col1">Duración (min)</td><td contenteditable="true" data-f="duracion" data-d="lun"></td><td contenteditable="true" data-f="duracion" data-d="mar"></td><td contenteditable="true" data-f="duracion" data-d="mie"></td><td contenteditable="true" data-f="duracion" data-d="jue"></td><td contenteditable="true" data-f="duracion" data-d="vie"></td><td contenteditable="true" data-f="duracion" data-d="sab"></td><td contenteditable="true" data-f="duracion" data-d="dom"></td></tr>
+        <tr><td class="col1">RPE / Esfuerzo (1-10)</td><td contenteditable="true" data-f="rpe" data-d="lun"></td><td contenteditable="true" data-f="rpe" data-d="mar"></td><td contenteditable="true" data-f="rpe" data-d="mie"></td><td contenteditable="true" data-f="rpe" data-d="jue"></td><td contenteditable="true" data-f="rpe" data-d="vie"></td><td contenteditable="true" data-f="rpe" data-d="sab"></td><td contenteditable="true" data-f="rpe" data-d="dom"></td></tr>
+        <tr><td class="col1">Dolor lumbar+caderas (0-10)</td><td contenteditable="true" data-f="dolor" data-d="lun"></td><td contenteditable="true" data-f="dolor" data-d="mar"></td><td contenteditable="true" data-f="dolor" data-d="mie"></td><td contenteditable="true" data-f="dolor" data-d="jue"></td><td contenteditable="true" data-f="dolor" data-d="vie"></td><td contenteditable="true" data-f="dolor" data-d="sab"></td><td contenteditable="true" data-f="dolor" data-d="dom"></td></tr>
+        <tr><td class="col1">Sueño (h y calidad)</td><td contenteditable="true" data-f="sueno" data-d="lun"></td><td contenteditable="true" data-f="sueno" data-d="mar"></td><td contenteditable="true" data-f="sueno" data-d="mie"></td><td contenteditable="true" data-f="sueno" data-d="jue"></td><td contenteditable="true" data-f="sueno" data-d="vie"></td><td contenteditable="true" data-f="sueno" data-d="sab"></td><td contenteditable="true" data-f="sueno" data-d="dom"></td></tr>
+        <tr><td class="col1">Hidratación (vasos)</td><td contenteditable="true" data-f="agua" data-d="lun"></td><td contenteditable="true" data-f="agua" data-d="mar"></td><td contenteditable="true" data-f="agua" data-d="mie"></td><td contenteditable="true" data-f="agua" data-d="jue"></td><td contenteditable="true" data-f="agua" data-d="vie"></td><td contenteditable="true" data-f="agua" data-d="sab"></td><td contenteditable="true" data-f="agua" data-d="dom"></td></tr>
+        <tr><td class="col1">Sensación física</td><td contenteditable="true" data-f="fisica" data-d="lun"></td><td contenteditable="true" data-f="fisica" data-d="mar"></td><td contenteditable="true" data-f="fisica" data-d="mie"></td><td contenteditable="true" data-f="fisica" data-d="jue"></td><td contenteditable="true" data-f="fisica" data-d="vie"></td><td contenteditable="true" data-f="fisica" data-d="sab"></td><td contenteditable="true" data-f="fisica" data-d="dom"></td></tr>
+        <tr><td class="col1">Sensación emocional</td><td contenteditable="true" data-f="emocion" data-d="lun"></td><td contenteditable="true" data-f="emocion" data-d="mar"></td><td contenteditable="true" data-f="emocion" data-d="mie"></td><td contenteditable="true" data-f="emocion" data-d="jue"></td><td contenteditable="true" data-f="emocion" data-d="vie"></td><td contenteditable="true" data-f="emocion" data-d="sab"></td><td contenteditable="true" data-f="emocion" data-d="dom"></td></tr>
+        <tr><td class="col1">Sankalpa repetido</td><td contenteditable="true" data-f="sankalpa" data-d="lun"></td><td contenteditable="true" data-f="sankalpa" data-d="mar"></td><td contenteditable="true" data-f="sankalpa" data-d="mie"></td><td contenteditable="true" data-f="sankalpa" data-d="jue"></td><td contenteditable="true" data-f="sankalpa" data-d="vie"></td><td contenteditable="true" data-f="sankalpa" data-d="sab"></td><td contenteditable="true" data-f="sankalpa" data-d="dom"></td></tr>
+        <tr><td class="col1">Notas libres</td><td contenteditable="true" data-f="notas" data-d="lun"></td><td contenteditable="true" data-f="notas" data-d="mar"></td><td contenteditable="true" data-f="notas" data-d="mie"></td><td contenteditable="true" data-f="notas" data-d="jue"></td><td contenteditable="true" data-f="notas" data-d="vie"></td><td contenteditable="true" data-f="notas" data-d="sab"></td><td contenteditable="true" data-f="notas" data-d="dom"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px">
+    <button onclick="imprimirSoloDiario()" style="background:#c1704a;color:#fff;border:0;padding:11px 20px;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit">🖨️ Imprimir solo el diario</button>
+    <span id="diario-guardado" style="color:#7a9e7e;font-size:0.85rem;align-self:center;opacity:0;transition:opacity .3s">Guardado ✓</span>
+  </div>
+</div>
+</section>
+
+<script>
+(function(){
+  const DIARIO_KEY='km_paqui_flores_diario_v1';
+  let semanaActiva=1;
+
+  function loadDiario(){try{return JSON.parse(localStorage.getItem(DIARIO_KEY))||{}}catch(e){return{}}}
+  function saveDiario(d){try{localStorage.setItem(DIARIO_KEY,JSON.stringify(d))}catch(e){}}
+
+  function renderDiario(){
+    const data=loadDiario();
+    const sem=data['sem'+semanaActiva]||{};
+    document.querySelectorAll('#tabla-diario td[contenteditable]').forEach(td=>{
+      const f=td.dataset.f, d=td.dataset.d;
+      td.textContent=(sem[f] && sem[f][d])||'';
+    });
+    document.getElementById('num-sem').textContent=semanaActiva;
+  }
+
+  window.mostrarSemana=function(n){
+    semanaActiva=n;
+    document.querySelectorAll('.sem-btn').forEach(b=>{
+      if(parseInt(b.dataset.sem)===n){
+        b.style.background='#c9a96e';b.style.color='#0d1117';
+      } else {
+        b.style.background='#888899';b.style.color='#fff';
+      }
+    });
+    renderDiario();
+  };
+
+  document.querySelectorAll('#tabla-diario td[contenteditable]').forEach(td=>{
+    td.addEventListener('input',()=>{
+      const data=loadDiario();
+      const semKey='sem'+semanaActiva;
+      if(!data[semKey])data[semKey]={};
+      const f=td.dataset.f, d=td.dataset.d;
+      if(!data[semKey][f])data[semKey][f]={};
+      data[semKey][f][d]=td.textContent.trim();
+      saveDiario(data);
+      const ind=document.getElementById('diario-guardado');
+      ind.style.opacity='1';
+      clearTimeout(td._timer);
+      td._timer=setTimeout(()=>{ind.style.opacity='0'},1200);
+    });
+    td.addEventListener('focus',()=>{td.style.background='#fffaeb'});
+    td.addEventListener('blur',()=>{td.style.background=''});
+  });
+
+  window.imprimirSoloDiario=function(){
+    document.body.classList.add('solo-diario');
+    setTimeout(()=>{window.print();setTimeout(()=>{document.body.classList.remove('solo-diario')},500)},100);
+  };
+
+  renderDiario();
+})();
+</script>
+<style>
+  body.solo-diario > *:not(#diario){display:none !important}
+  body.solo-diario #diario{display:block !important}
+  @media print{body.solo-diario #diario{padding:0}}
+</style>
+
+<!-- ============ 16. DESPEDIDA ============ -->
+<section id="despedida" style="background:#0d1117;color:#faf7f2;padding:70px 24px">
+<div class="wrap" style="max-width:720px">
+  <div class="ornament" style="background:#c9a96e"></div>
+  <h2 style="color:#c9a96e;text-align:center;font-family:Georgia,serif;font-size:1.9rem;margin:0 0 6px">Antes de cerrar este documento</h2>
+  <p style="text-align:center;color:#888899;font-style:italic;margin-bottom:32px">Una última cosa, Paqui — la más importante.</p>
+
+  <div class="carta" style="color:#d8d4c5">
+    <p>Hemos hecho un recorrido largo. Si has llegado hasta aquí leyendo, ya has hecho más de lo que crees: <strong>te has dedicado este rato a ti misma</strong>. Solo eso, en tu vida, ya es un cambio. Recuérdalo.</p>
+
+    <p>Te voy a ser honesto contigo, porque te lo mereces. <strong>Va a haber días flojos</strong>. Días en los que tu sistema nervioso esté agotado, en los que el dolor suba a 8/10 sin razón aparente, días en los que el duelo aparezca sin avisar, días en los que la rumiación gane. Eso no es un fallo del programa, ni un fallo tuyo. Es la realidad de un cuerpo que lleva años sosteniendo mucho. La pregunta no es "¿voy a tener días flojos?" — la respuesta es sí. La pregunta es <strong>"¿qué hago esos días?"</strong>.</p>
+
+    <p>Para esos días, déjame recordarte tres cosas concretas:</p>
+
+    <p>Primera: <strong>existe el Modo Express de 12 minutos</strong> y vale exactamente lo mismo en tu racha que una sesión de 30. Es más, en esos días vale incluso más — porque has aparecido cuando te costaba más aparecer.</p>
+
+    <p>Segunda: <strong>la Ducha Articular de 7 minutos cuenta como sesión válida</strong>. Hay días en los que es lo único que tu cuerpo te va a permitir. Está bien.</p>
+
+    <p>Tercera, y la más importante: <strong>Viparita Karani</strong> — piernas en la pared, 10 minutos. Esa postura, en tus peores días, es tu medicina. Si solo eres capaz de hacer una cosa, que sea esa.</p>
+
+    <p>Una pregunta que te invito a hacerte cada domingo, mirando tu rueda radar de la semana: <em>¿qué dimensión ha mejorado, aunque sea un poco?</em>. No esperes que sean todas a la vez. A veces la fuerza sube y la calma baja, otras al revés. Esa es la danza humana — no es perfección, es vida.</p>
+
+    <p>Y cuando estas seis semanas terminen, mi invitación es que <strong>elijas dos o tres cosas de todo este programa</strong> y las hagas tuyas para siempre. No tienes que mantenerlo todo. Dos o tres prácticas sostenidas en el tiempo cambian más una vida que cuarenta hechas tres semanas y abandonadas. Tú sabrás cuáles te llaman.</p>
+
+    <p>Quiero que sepas, Paqui, que estoy aquí. Si en algún punto necesitas escribirme — para una duda concreta, para un día difícil, para un avance que quieras celebrar — el canal está abierto. Esto no es un documento que recibes y se acaba. Es el inicio.</p>
+
+    <div style="background:#1a1f2e;border:1px solid #c9a96e;border-radius:14px;padding:32px 24px;margin:38px 0;text-align:center">
+      <p style="font-family:Georgia,serif;font-style:italic;font-size:1.3rem;color:#c9a96e;line-height:1.6;margin:0">"Cuidarte es la decisión más inteligente<br>que puedes seguir tomando."</p>
+    </div>
+
+    <p>Con toda la convicción profunda de que esto va a salir bien — y con toda mi alegría profesional de acompañarte en este camino,</p>
+
+    <div class="firma" style="color:#c9a96e;font-size:1.3rem;text-align:right">— Kiko 🌿</div>
+    <p style="text-align:right;color:#888899;font-size:0.82rem;font-style:italic;margin-top:4px">Kiko Martínez · Terapeuta Natural<br>Tu bienestar, mi máxima prioridad.</p>
+  </div>
+  <div class="ornament" style="background:#c9a96e;margin-top:30px"></div>
+</div>
+</section>
+
+<!-- ============ 17. CIERRE LEGAL ============ -->
+<section id="cierre" class="sec-light" style="padding:34px 20px">
+<div class="wrap">
+  <div class="aviso" style="background:#fff;border-color:#888899;border-width:1px">
+    <div class="ico" style="color:#888899">📋</div>
+    <div>
+      <h3 style="color:#888899">Información clínica y legal</h3>
+      <p style="color:#888899">Este Programa Integral de Movimiento es un material complementario a tu consulta presencial con Kiko Martínez, Terapeuta Natural. <strong>NO sustituye atención médica, fisioterapéutica, psicológica ni psiquiátrica</strong>. Dado tu diagnóstico de fibromialgia y escoliosis, te recomiendo encarecidamente compartir este programa con tu médico de cabecera en tu próxima revisión. Tu medicación actual (Bilastina, Relvar inhalador) es compatible con todos los ejercicios y suplementos sugeridos. Ante cualquier síntoma nuevo, dolor agudo o reacción inesperada, detén el ejercicio y consulta. Los datos de tu cuestionario están tratados conforme al RGPD y la LOPDGDD. Tienes derecho a acceso, rectificación, supresión, oposición, limitación y portabilidad ejerciéndolos a través del canal habitual de comunicación con Kiko Martínez · Bienestar Natural.</p>
+    </div>
+  </div>
+  <p style="text-align:center;color:#888899;font-size:0.78rem;margin-top:30px;font-style:italic;line-height:1.6">
+    Programa Integral de Movimiento · Versión 1.0 · 19/05/2026<br>
+    Kiko Martínez · Bienestar Natural · Osteopatía · Coaching · Fitoterapia · Bienestar Integral<br>
+    Generado para Paqui Flores Casado
+  </p>
+</div>
+</section>
+
+<!-- BOTÓN IMPRIMIR -->
+<button class="btn-imprimir" onclick="window.print()">🖨️ Imprimir / PDF</button>
+
+</body>
+</html>
